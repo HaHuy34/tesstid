@@ -130,7 +130,7 @@ $(document).ready(function () {
     document.getElementsByClassName("contain-products")[0].style.display = "";
   } else {
     // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
-    var soLuong = window.innerWidth < 1200 ? 4 : 5; // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
+    var soLuong = window.innerWidth < 1300 ? 4 : 4; // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
 
     // Các màu
     var yellow_red = ["#ff9c00", "#ec1f1f"];
@@ -139,17 +139,17 @@ $(document).ready(function () {
 
     // Thêm các khung sản phẩm
     var div = document.getElementsByClassName("contain-khungSanPham")[0];
+    // addKhungSanPham(
+    //   "NỔI BẬT NHẤT",
+    //   yellow_red,
+    //   ["star=3", "sort=rateCount-decrease"],
+    //   soLuong,
+    //   div
+    // );
     addKhungSanPham(
-      "NỔI BẬT NHẤT",
-      yellow_red,
-      ["star=3", "sort=rateCount-decrease"],
-      soLuong,
-      div
-    );
-    addKhungSanPham(
-      "SẢN PHẨM MỚI",
+      "MÁY ĐO",
       blue,
-      ["promo=moiramat", "sort=rateCount-decrease"],
+      ["promo=maydoluongcacloai", "sort=rateCount-decrease"],
       soLuong,
       div
     );
@@ -160,27 +160,27 @@ $(document).ready(function () {
       soLuong,
       div
     );
-    addKhungSanPham(
-      "GIÁ SỐC ONLINE",
-      green,
-      ["promo=giareonline", "sort=rateCount-decrease"],
-      soLuong,
-      div
-    );
-    addKhungSanPham(
-      "GIẢM GIÁ LỚN",
-      yellow_red,
-      ["promo=giamgia"],
-      soLuong,
-      div
-    );
-    addKhungSanPham(
-      "GIÁ RẺ CHO MỌI NHÀ",
-      green,
-      ["price=0-3000000", "sort=price"],
-      soLuong,
-      div
-    );
+    // addKhungSanPham(
+    //   "GIÁ SỐC ONLINE",
+    //   green,
+    //   ["promo=giareonline", "sort=rateCount-decrease"],
+    //   soLuong,
+    //   div
+    // );
+    // addKhungSanPham(
+    //   "GIẢM GIÁ LỚN",
+    //   yellow_red,
+    //   ["promo=giamgia"],
+    //   soLuong,
+    //   div
+    // );
+    // addKhungSanPham(
+    //   "GIÁ RẺ CHO MỌI NHÀ",
+    //   green,
+    //   ["price=0-3000000", "sort=price"],
+    //   soLuong,
+    //   div
+    // );
   }
 
   // Thêm chọn mức giá
@@ -350,55 +350,41 @@ function clearAllProducts() {
 
 // Thêm sản phẩm vào các khung sản phẩm
 function addKhungSanPham(tenKhung, color, filter, len, ele) {
-  // convert color to code
-  var gradient = ``
-  var borderColor = `border-color: ` + color[0];
-  var borderA =
-    `	border-left: 2px solid ` +
-    color[0] +
-    `;
-					border-right: 2px solid ` +
-    color[0] +
-    `;`;
+  // style màu
+  var borderColor = `border-color: ${color[0]}`;
 
   // mở tag
-  var s =
-    `<div class="khungSanPham" style="` +
-    borderColor +
-    `">
-				<h3 class="tenKhung" style="` +
-    gradient +
-    `"> ` +
-    tenKhung +
-    ` </h3>
-				<div class="listSpTrongKhung flexContain row">`;
+  var s = `
+    <div class="khungSanPham" style="${borderColor}">
+      <div class="khungHeader">
+        <h3 class="tenKhung">${tenKhung}</h3>
+        <a class="xemTatCa" href="index.html?${filter.join("&")}">
+          Xem tất cả <i class='bxr  bx-arrow-right'  ></i> 
+        </a>
+      </div>
+      <div class="listSpTrongKhung flexContain row">`;
 
-  // thêm các <li> (sản phẩm) vào tag
+  // thêm sản phẩm
   var spResult = phanTich_URL(filter, false);
   if (spResult.length < len) len = spResult.length;
 
-  for (var i = 0; i < len; i++) {
-    s += addProduct(spResult[i], null, true);
-    // truyền vào 'true' để trả về chuỗi rồi gán vào s
+  if (spResult.length > 0) {
+    for (var i = 0; i < len; i++) {
+      s += addProduct(spResult[i], null, true);
+    }
+  } else {
+    s += `<p class="noProduct">Không có sản phẩm nào</p>`;
   }
 
-  // thêm nút xem tất cả rồi đóng tag
-  s +=
-    `	</div>
-			<a class="xemTatCa" href="index.html?` +
-    filter.join("&") +
-    `" style="` +
-    borderA +
-    `">
-				Xem tất cả ` +
-    spResult.length +
-    ` sản phẩm
-			</a>
-		</div>`;
+  // đóng tag
+  s += `
+      </div>
+    </div>`;
 
-  // thêm khung vào contain-khung
-  ele.innerHTML += s;
+  // thêm khung vào ele
+  ele.insertAdjacentHTML("beforeend", s);
 }
+
 
 // Nút phân trang
 function themNutPhanTrang(soTrang, trangHienTai) {
@@ -638,7 +624,7 @@ function alertNotHaveProduct(coSanPham) {
   var thongbao = document.getElementById("khongCoSanPham");
   if (!coSanPham) {
     thongbao.style.width = "auto";
-    thongbao.style.opacity = "1";
+    thongbao.style.display = "block";
     thongbao.style.margin = "auto"; // Căn giữa
     thongbao.style.transitionDuration = "1s"; // hiện ra từ từ
   } else {

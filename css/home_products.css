@@ -1,5 +1,5 @@
 #khongCoSanPham {
-	opacity: 0;
+	display: none;
 	width: 0;
 	color: red;
 	font-size: 30px;
@@ -16,7 +16,8 @@
 .sanPham {
 	border-radius: 13px;
 	position: relative;
-	margin: 10px;
+	margin: 9px;
+	padding: 10px;
 	border: 1px solid #bdbdbd;
 	-webkit-transition-duration: .3s;
 	-o-transition-duration: .3s;
@@ -24,7 +25,7 @@
 	overflow: hidden;
 }
 
-.sanPham.col-12.col-sm-6.col-md-4.col-lg-3 {
+.sanPham.col-6.col-sm-4.col-md-4.col-lg-3 {
     padding: 10px;
 }
 
@@ -75,9 +76,9 @@
 	display: block;
 	margin: 20px 0;
 	color: #333;
-	line-height: 1.3em;
+	line-height: 1.5em;
 	font-size: 15px;
-	font-weight: normal;
+	font-weight: 600;
 }
 
 /* Hightlight ten san pham khi hover */

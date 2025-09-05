@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     outline: none;
-    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
 }
 
 body,
@@ -33,8 +37,19 @@ hr {
     border-top: 1px solid #ddd;
 }
 
-.flexContain {
-    display: flex;
+@media (min-width: 992px) {
+    .col-lg-3 {
+        flex: 0 0 auto;
+        width: 23% !important;
+    }
+}
+
+a:hover {
+    color: #000 !important;
+}
+
+a.call-phone:hover {
+    color: red !important;
 }
 
 /* Use for auto clear float */
@@ -56,7 +71,8 @@ hr {
 
 /* =========   Alert ===============*/
 #alert {
-    z-index: 200; /* luôn trên cùng (đè lên những thứ khác) */
+    z-index: 200;
+    /* luôn trên cùng (đè lên những thứ khác) */
     display: block;
     position: fixed;
     bottom: 40px;
@@ -101,6 +117,7 @@ hr {
     cursor: pointer;
     transition-duration: .2s;
 }
+
 #goto-top-page:hover {
     background: rgba(0, 0, 0, .7);
     width: 50px;

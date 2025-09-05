@@ -73,7 +73,7 @@ function addToWeb(p, ele, returnString) {
 	}
 
 	// Chuyển giá tiền sang dạng tag html
-	var price = `<a href="tel:0983976896" style="font-size: 22px; font-weight: 700;">` + p.price + `</a>`;
+	var price = `<span style="font-size: 20px;">Giá:</span><a class="call-phone" href="tel:0983976896" style="font-size: 20px; font-weight: 700; color: red;"> `  +  p.price + `</a>`;
 	if (p.promo && p.promo.name == "giareonline") {
 		// khuyến mãi 'Giá rẻ online' sẽ có giá thành mới
 		price = `<strong>` + p.promo.value + `</strong>

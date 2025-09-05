@@ -8,7 +8,9 @@
 
 	<title>Thế giới điện thoại</title>
 	<link rel="shortcut icon" href="img/logo1.jpeg" />
-
+	<!-- Boxicons CSS -->
+	<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+	<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -50,122 +52,127 @@
 </head>
 
 <body>
+	<header>
+		<script> addTopNav(); </script>
+		<script> addHeader(); </script>
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+				</div>
+
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+
+				<div class="swiper-pagination"></div>
+
+				<div class="autoplay-progress">
+					<svg viewBox="0 0 48 48">
+						<circle cx="24" cy="24" r="20"></circle>
+					</svg>
+					<span></span>
+				</div>
+			</div>
+
+			<div class="policy">
+				<ul>
+					<li>
+						<img src="./img/banners/badgepng.png" alt="uy-tín-chất-lượng">
+						<a href="#">
+							<span>Uy tín về <br><strong>CHẤT LƯỢNG</strong></span>
+						</a>
+					</li>
+					<li>
+						<img src="./img/banners/transport.png" alt="sp">
+						<a href="#">
+							<span>Giao hàng tận nơi <br><strong>63 TỈNH THÀNH</strong></span>
+						</a>
+					</li>
+					<li>
+						<img style="height: 90px !important;" src="./img/banners/Return.jpg" alt="sp">
+						<a href="#">
+							<span>Chính sách đổi trả <br><strong>LINHHOẠT</strong></span>
+						</a>
+					</li>
+					<li>
+						<img src="./img/banners/guarantee.jpg" alt="sp">
+						<a href="#">
+							<span>Bảo hành <br><strong>CHÍNH HÃNG</strong></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- End Banner -->
+
+			<!-- <img src="img/banners/blackFriday.gif" alt="sp" style="width: 100%;"> -->
+
+			<br>
+
+			<div class="flexContain">
+
+				<div class="pricesRangeFilter dropdown" style="display: none;">
+					<button class="dropbtn">Giá tiền</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="promosFilter dropdown" style="display: none;">
+					<button class="dropbtn">Khuyến mãi</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="starFilter dropdown" style="display: none;">
+					<button class="dropbtn">Số lượng sao</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="sortFilter dropdown">
+					<button class="dropbtn">Sắp xếp</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+			</div> <!-- End khung chọn bộ lọc -->
+
+			<div class="choosedFilter flexContain" style="display: none;">
+				<a id="deleteAllFilter" style="display: none;">
+					<h3>Xóa bộ lọc</h3>
+				</a>
+			</div> <!-- Những bộ lọc đã chọn -->
+			<hr>
+
+			<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
+			<div class="contain-products" style="display:none">
+				<div class="filterName" style="display: none;">
+					<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
+				</div> <!-- End FilterName -->
+<div class="row">
 	
-	<script> addTopNav(); </script>
+</div>
+				<div id="products" class="homeproduct group flexContain row" >
+					<div id="khongCoSanPham">
+						<i class="fa fa-times-circle"></i>
+						Không có sản phẩm nào
+					</div> <!-- End Khong co san pham -->
+				</div><!-- End products -->
 
-	<script> addHeader(); </script>
-	<div class="container">
-		<div class="swiper mySwiper">
-			<div class="swiper-wrapper">
+				<div class="pagination"></div>
 			</div>
 
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
+			<!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
+			<div class="contain-khungSanPham"></div>
 
-			<div class="swiper-pagination"></div>
+		</div> <!-- End Section -->
 
-			<div class="autoplay-progress">
-				<svg viewBox="0 0 48 48">
-					<circle cx="24" cy="24" r="20"></circle>
-				</svg>
-				<span></span>
-			</div>
-		</div>
-
-		<div class="policy">
-			<ul>
-				<li>
-					<img src="./img/banners/badgepng.png" alt="uy-tín-chất-lượng">
-					<a href="#">
-						<span>Uy tín về <br><strong>CHẤT LƯỢNG</strong></span>
-					</a>
-				</li>
-				<li>
-					<img src="./img/banners/transport.png" alt="sp">
-					<a href="#">
-						<span>Giao hàng tận nơi <br><strong>63 TỈNH THÀNH</strong></span>
-					</a>
-				</li>
-				<li>
-					<img style="height: 90px !important;" src="./img/banners/Return.jpg" alt="sp">
-					<a href="#">
-						<span>Chính sách đổi trả <br><strong>LINHHOẠT</strong></span>
-					</a>
-				</li>
-				<li>
-					<img src="./img/banners/guarantee.jpg" alt="sp">
-					<a href="#">
-						<span>Bảo hành <br><strong>CHÍNH HÃNG</strong></span>
-					</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- End Banner -->
-
-		<!-- <img src="img/banners/blackFriday.gif" alt="sp" style="width: 100%;"> -->
-
-		<br>
-
-		<div class="flexContain">
-
-			<div class="pricesRangeFilter dropdown" style="display: none;">
-				<button class="dropbtn">Giá tiền</button>
-				<div class="dropdown-content"></div>
-			</div>
-
-			<div class="promosFilter dropdown" style="display: none;">
-				<button class="dropbtn">Khuyến mãi</button>
-				<div class="dropdown-content"></div>
-			</div>
-
-			<div class="starFilter dropdown" style="display: none;">
-				<button class="dropbtn">Số lượng sao</button>
-				<div class="dropdown-content"></div>
-			</div>
-
-			<div class="sortFilter dropdown">
-				<button class="dropbtn">Sắp xếp</button>
-				<div class="dropdown-content"></div>
-			</div>
-
-		</div> <!-- End khung chọn bộ lọc -->
-
-		<div class="choosedFilter flexContain">
-			<a id="deleteAllFilter" style="display: none;">
-				<h3>Xóa bộ lọc</h3>
-			</a>
-		</div> <!-- Những bộ lọc đã chọn -->
-		<hr>
-
-		<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
-		<div class="contain-products" style="display:none">
-			<div class="filterName" style="display: none;">
-				<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
-			</div> <!-- End FilterName -->
-
-			<ul id="products" class="homeproduct group flexContain">
-				<div id="khongCoSanPham">
-					<i class="fa fa-times-circle"></i>
-					Không có sản phẩm nào
-				</div> <!-- End Khong co san pham -->
-			</ul><!-- End products -->
-
-			<div class="pagination"></div>
-		</div>
-
-		<!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
-		<div class="contain-khungSanPham"></div>
-
-	</div> <!-- End Section -->
-
-	<script>
-		addContainTaiKhoan(); addPlc();
-	</script>
-	<div class="companyMenu group flexContain owl-carousel"></div>
-	<div class="footer">
+		<script>
+			addContainTaiKhoan(); addPlc();
+		</script>
+		<div class="companyMenu group flexContain owl-carousel"></div>
+	</main>
+	<footer>
 		<script>addFooter();</script>
-	</div>
+	</footer>
 
 	<i class="fa fa-arrow-up" id="goto-top-page" onclick="gotoTop()"></i>
 	<!-- Boostrap CSS -->

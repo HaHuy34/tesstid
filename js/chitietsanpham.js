@@ -39,9 +39,12 @@ function phanTich_URL_chiTietSanPham() {
     }
 
     sanPhamHienTai = timKiemTheoMa(list_products, maProduct);
+    console.log(sanPhamHienTai,"sanPhamHienTai");
+    
     if(!sanPhamHienTai) return khongTimThaySanPham();
 
     var divChiTiet = document.getElementsByClassName('chitietSanpham')[0];
+    
 
     // Đổi title
     document.title = nameProduct + ' - Thế giới điện thoại';
@@ -67,7 +70,7 @@ function phanTich_URL_chiTietSanPham() {
     // Cập nhật giá + label khuyến mãi
     var price = divChiTiet.getElementsByClassName('area_price')[0];
     if (sanPhamHienTai.promo.name != 'giareonline') {
-        price.innerHTML = `<strong>` + sanPhamHienTai.price + `</strong>`;
+        // price.innerHTML = `<strong>` + sanPhamHienTai.price + `</strong>`;
         price.innerHTML += new Promo(sanPhamHienTai.promo.name, sanPhamHienTai.promo.value).toWeb();
     } else {
         document.getElementsByClassName('ship')[0].style.display = ''; // hiển thị 'giao hàng trong 1 giờ'
@@ -80,6 +83,7 @@ function phanTich_URL_chiTietSanPham() {
 
     // Cập nhật thông số
     var info = document.getElementsByClassName('info')[0];
+    
     var s = addThongSo('Tên', sanPhamHienTai.detail.ten);
     s += addThongSo('Model', sanPhamHienTai.detail.model);
     s += addThongSo('Tiêu chuẩn', sanPhamHienTai.detail.tieuchuan);
@@ -173,26 +177,56 @@ function changepic(src) {
 }
 
 // Thêm sản phẩm vào các khung sản phẩm
-function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
-	// convert color to code
+// function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
+// 	// convert color to code
 	
-	var borderColor = `border-color: ` + color[0];
-	var borderA = `	border-left: 2px solid ` + color[0] + `;
-					border-right: 2px solid ` + color[0] + `;`;
+// 	var borderColor = `border-color: ` + color[0];
+// 	var borderA = `	border-left: 2px solid ` + color[0] + `;
+// 					border-right: 2px solid ` + color[0] + `;`;
 
-	// mở tag
-	var s = `<div class="khungSanPham" style="` + borderColor + `">
-				<h3 class="tenKhung">* ` + tenKhung + ` *</h3>
-				<div class="listSpTrongKhung flexContain row">`;
+// 	// mở tag
+// 	var s = `<div class="khungSanPham" style="` + borderColor + `">
+// 				<h3 class="tenKhung">* ` + tenKhung + ` *</h3>
+// 				<div class="listSpTrongKhung flexContain row">`;
 
-	for (var i = 0; i < list_sanpham.length; i++) {
-		s += addProduct(list_sanpham[i], null, true);
-		// truyền vào 'true' để trả về chuỗi rồi gán vào s
-	}
+// 	for (var i = 0; i < list_sanpham.length; i++) {
+// 		s += addProduct(list_sanpham[i], null, true);
+// 		// truyền vào 'true' để trả về chuỗi rồi gán vào s
+// 	}
 
-	// thêm khung vào contain-khung
-	ele.innerHTML += s;
+// 	// thêm khung vào contain-khung
+// 	ele.innerHTML += s;
+// }
+
+// Thêm sản phẩm vào các khung sản phẩm
+function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
+    var borderColor = `border-color: ` + color[0];
+    var borderA = `border-left: 2px solid ` + color[0] + `;
+                   border-right: 2px solid ` + color[0] + `;`;
+
+    // mở tag
+    var s = `<div class="khungSanPham" style="` + borderColor + `">
+                <div class="headAndMore">
+                    <h3 class="tenKhung">` + tenKhung + `</h3>
+                </div>
+                <div class="listSpTrongKhung flexContain row">`;
+
+    // thêm sản phẩm
+    for (var i = 0; i < list_sanpham.length; i++) {
+        s += addProduct(list_sanpham[i], null, true);
+    }
+
+    // thêm nút xem tất cả + đóng tag
+    s += `</div>
+          <a class="xemTatCa" href="index.html" style="` + borderA + `">
+              Xem tất cả ` + list_sanpham.length + ` <i class='bxr  bx-arrow-right'  ></i> 
+          </a>
+        </div>`;
+
+    // thêm khung vào contain-khung
+    ele.innerHTML += s;
 }
+
 
 /// gợi ý sản phẩm
 function suggestion(){
