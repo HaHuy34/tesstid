@@ -55,7 +55,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/1(11).jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam1",
   },
   {
     name: "Băng tải cao su chịu nhiệt",
@@ -84,7 +84,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/Bang%20Keo%20CN/b%E1%BB%8Dc%20rulo%20cao%20su.png",
       },
     },
-    masp: "Sam0",
+    masp: "Sam2",
   },
   {
     name: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
@@ -113,7 +113,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/rulo-boc-cao-su.jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam3",
   },
   {
     name: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
@@ -142,7 +142,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/bang%20tai%20luoi%201.jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam4",
   },
   {
     name: "Đắp cao su rulo, trục, con lăn cao su đưa phôi",
@@ -171,7 +171,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/6(6).jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam5",
   },
   {
     name: "Băng tải cao su nhật Cũ và Mới các loại",
@@ -200,7 +200,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/1(11).jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam6",
   },
   {
     name: "Băng tải cao su chịu nhiệt",
@@ -229,7 +229,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/Bang%20Keo%20CN/b%E1%BB%8Dc%20rulo%20cao%20su.png",
       },
     },
-    masp: "Sam0",
+    masp: "Sam7",
   },
   {
     name: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
@@ -258,7 +258,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/rulo-boc-cao-su.jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam8",
   },
   {
     name: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
@@ -287,7 +287,7 @@ var list_products = [
           "https://maycongnghiep.net.vn/hinh-anh/images/bang%20tai%20luoi%201.jpg",
       },
     },
-    masp: "Sam0",
+    masp: "Sam9",
   },
   {
     name: "Máy đo độ rung công nghiệp Rion VM-82A",
@@ -316,7 +316,7 @@ var list_products = [
           "",
       },
     },
-    masp: "Sam0",
+    masp: "Sam10",
   }, 
   {
     name: "Máy đo an toàn thực phẩm Greentest ECO4F",
@@ -345,7 +345,7 @@ var list_products = [
           "",
       },
     },
-    masp: "Sam0",
+    masp: "Sam11",
   },
   {
     name: "Máy đo tỷ trọng cầm tay KYOTO DA-130N",
@@ -374,7 +374,7 @@ var list_products = [
           "",
       },
     },
-    masp: "Sam0",
+    masp: "Sam12",
   },
   {
     name: "Máy đo nhiệt độ và độ ẩm HUATO A2000-EX",
@@ -403,7 +403,7 @@ var list_products = [
           "",
       },
     },
-    masp: "Sam0",
+    masp: "Sam13",
   },
   
 ];

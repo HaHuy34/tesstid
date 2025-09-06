@@ -34,7 +34,6 @@
 }
 
 .dropbtn:after {
-	/* kí tự mũi tên > */
 	content: ' \25B7';
 }
 
@@ -46,6 +45,10 @@
 .dropdown {
 	position: relative;
 	margin: 10px 5px;
+}
+
+.sortFilter.dropdown {
+    width: fit-content;
 }
 
 .dropdown-content {

@@ -49,12 +49,9 @@
 			transition-duration: .15s;
 		}
 		.top-nav-quicklink li a:hover {
-			padding-top: 4px; 
-			border-bottom: 4px solid #000;
+			/* padding-top: 4px;  */
+			/* border-bottom: 4px solid #000; */
 			color: #000;
-		}
-		.top-nav-quicklink li a:hover i {
-			color: Dodgerblue;
 		}
 	/* ======= End quick link ======= */
 /* ======= End Top navigation ======= */
