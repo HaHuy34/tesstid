@@ -1,7 +1,6 @@
-.companyMenu {
-	margin: 30px 0 30px;
+.companyMenu.group.flexContain.owl-carousel.container.owl-loaded.owl-drag {
+    padding: 80px 0;
 }
-
 .companyMenu a {
 	border: 2px solid #fff;
 	line-height: 40px;
@@ -135,10 +134,12 @@
 /* Các khung sản phẩm */
 
 
-.khungSanPham {
-	margin: 50px 0;
-	box-sizing: border-box;
-	/* dùng để width ko vượt ra ngoài khi có border */
+.headAndMore {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #f5f5f5;
+	padding: 15px;
 }
 
 .khungSanPham h3.tenKhung {

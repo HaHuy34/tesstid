@@ -528,7 +528,7 @@ function addTags(nameTag, link) {
 }
 
 // Thêm sản phẩm vào trang
-function addProduct(p, ele, returnString) {
+function addProduct(p, ele, returnString, isGrid = true) {
   promo = new Promo(p.promo.name, p.promo.value); // class Promo
   product = new Product(
     p.masp,
@@ -540,7 +540,7 @@ function addProduct(p, ele, returnString) {
     promo
   ); // Class product
 
-  return addToWeb(product, ele, returnString);
+  return addToWeb(product, ele, returnString, isGrid);
 }
 
 // Thêm topnav vào trang
@@ -674,6 +674,99 @@ function addFooter() {
 `);
 }
 
+// Nhắn tin 
+function initContactButtons() {
+  // Thông tin mặc định (bạn thay số & link ở đây)
+  const zaloLink = "https://zalo.me/0123456789";
+  const phoneNumber = "0123456789";
+  const messengerLink = "https://m.me/ten-facebook";
+
+  // Nếu chưa có CSS thì tự động thêm vào
+  if (!document.getElementById("contact-buttons-style")) {
+    const style = document.createElement("style");
+    style.id = "contact-buttons-style";
+    style.innerHTML = `
+      .contact-fixed {
+        position: fixed;
+        right: 20px;
+        bottom: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 9999;
+      }
+
+      .contact-fixed .icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+        cursor: pointer;
+        animation: bounce 3s infinite;
+      }
+
+      .contact-fixed .icon:hover {
+        transform: scale(1.1);
+      }
+
+      .contact-fixed .icon img,
+      .contact-fixed .icon i {
+        width: 28px;
+        height: 28px;
+        color: #fff;
+      }
+
+      /* màu riêng cho từng icon */
+      .zalo { background: linear-gradient(180deg, #3FA9F5, #007AFF); }
+      .phone { background: linear-gradient(180deg, #4CD964, #34C759); color:#fff; font-size:24px; }
+      .messenger { background: linear-gradient(45deg, #fff); }
+
+      /* hiệu ứng nhún nhẹ */
+      @keyframes bounce {
+        0%, 70%, 100% { transform: translateY(0); }
+        80% { transform: translateY(-5px); }
+        90% { transform: translateY(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Tạo div cha
+  const container = document.createElement("div");
+  container.className = "contact-fixed";
+
+  // Tạo Zalo
+  const zalo = document.createElement("a");
+  zalo.href = zaloLink;
+  zalo.target = "_blank";
+  zalo.className = "icon zalo";
+  zalo.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">`;
+  container.appendChild(zalo);
+
+  // Tạo Phone
+  const phone = document.createElement("a");
+  phone.href = "tel:" + phoneNumber;
+  phone.className = "icon phone";
+  phone.innerHTML = `<i class='bx bx-phone'></i>`;
+  container.appendChild(phone);
+
+  // Tạo Messenger
+  const mess = document.createElement("a");
+  mess.href = messengerLink;
+  mess.target = "_blank";
+  mess.className = "icon messenger";
+  mess.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhIQOh9Hty7NxMW4F5ua895UURmpNQIgE-5k4Mo4ksw60rUZ0p3AEbluGmoOqV_f8D7fw&usqp=CAU" alt="Messenger">`;
+  container.appendChild(mess);
+
+  // Thêm vào body
+  document.body.appendChild(container);
+}
+
+
 // Thêm contain Taikhoan
 function addContainTaiKhoan() {
   document.write(`
@@ -801,20 +894,64 @@ function checkLocalStorage() {
 
 // Di chuyển lên đầu trang
 function gotoTop() {
+  // Nếu chưa có CSS thì thêm vào
+  if (!document.getElementById("back-to-top-style")) {
+    const style = document.createElement("style");
+    style.id = "back-to-top-style";
+    style.innerHTML = `
+      #backToTop {
+        position: fixed;
+        right: 20px;
+        bottom: -80px; /* ẩn dưới màn hình */
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: #ff6600;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: all 0.4s ease;
+        z-index: 9999;
+      }
+      #backToTop.show {
+        bottom: 40px;   /* trượt lên vị trí hiển thị */
+        opacity: 1;     /* fade in */
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Nếu chưa có nút thì tạo
+  if (!document.getElementById("backToTop")) {
+    const btn = document.createElement("div");
+    btn.id = "backToTop";
+    btn.innerHTML = "↑";
+    btn.addEventListener("click", initBackToTop);
+    document.body.appendChild(btn);
+  }
+
+  // Bắt sự kiện scroll
+  window.addEventListener("scroll", function () {
+    const btn = document.getElementById("backToTop");
+    if (window.scrollY > 300) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
+    }
+  });
+}
+
+// Hàm scroll lên top
+function initBackToTop() {
   if (window.jQuery) {
-    jQuery("html,body").animate(
-      {
-        scrollTop: 0,
-      },
-      100
-    );
+    jQuery("html,body").animate({ scrollTop: 0 }, 400);
   } else {
-    document.getElementsByClassName("top-nav")[0].scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 

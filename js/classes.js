@@ -86,7 +86,7 @@ function addToWeb(p, ele, returnString) {
 
 	// Cho mọi thứ vào tag <li>... </li>
 	var newLi =
-	`<div class="sanPham col-12 col-sm-6 col-md-3 col-lg-3">
+	`<div class="sanPham col-12 col-sm-6 col-md-3 col-lg-3 item">
 		<a href="` + chitietSp + `">
 				<div class="imgContainer">
 					<img src=` + p.img + ` alt="sp">

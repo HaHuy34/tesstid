@@ -105,7 +105,7 @@ $(document).ready(function () {
       0: { items: 2 },
       576: { items: 3 },
       768: { items: 4 },
-      1200: { items: 6 },
+      1200: { items: 4 },
     },
   });
 });
@@ -154,9 +154,9 @@ $(document).ready(function () {
       div
     );
     addKhungSanPham(
-      "BĂNG TẢI",
+      "DẦU CÔNG NGHIỆP",
       yellow_red,
-      ["promo=bangtai", "sort=rateCount-decrease"],
+      ["promo=daucongnghiep", "sort=rateCount-decrease"],
       soLuong,
       div
     );

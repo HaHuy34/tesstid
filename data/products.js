@@ -1,16 +1,16 @@
 var list_products = [
   {
-    name: "Đắp cao su rulo, trục, con lăn cao su đưa phôi",
-    company: "Băng tải",
-    img: "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/4(9).jpg",
+    name: "Dầu bàn trượt Castrol Magna BD 68",
+    company: "Dầu công nghiệp",
+    img: "https://dauthuyluc.org.vn/wp-content/uploads/2016/03/D%E1%BA%A7u-r%C3%A3nh-tr%C6%B0%E1%BB%A3t-Castrol-BD-68.jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Đắp cao su rulo, trục, con lăn cao su đưa phôi",
+      ten: "Dầu bàn trượt Castrol Magna BD 68",
      model: "Rulo-CR-01",
     tieuchuan: "ISO 9001:2015",
     xuatsu: "Việt Nam",
@@ -18,7 +18,7 @@ var list_products = [
     baohanh: "12 tháng",
     modelkhac: "Rulo-CR-02, Rulo-CR-03",
       detailcontent:
-        "Bánh đà là một thiết bị cơ khí quay được sử dụng để lưu trữ năng lượng quay. Bánh đà có mô men quán tính lớn, và do đó chống lại sự thay đổi tốc độ quay. Lượng năng lượng được lưu trữ trong một bánh đà tỉ lệ với bình phương tốc độ quay của nó. Năng lượng được chuyển giao cho một bánh đà bằng cách áp dụng mô men xoắn đối với nó, do đó gây ra tốc độ quay của nó, và do đó năng lượng lưu trữ của nó, gia tăng. Ngược lại, bánh đà giải phóng năng lượng được lưu trữ bằng cách áp mô-men xoắn đến tải cơ khí, kết quả làm tốc độ quay giảm.Chúng cung cấp năng lượng liên tục khi các nguồn năng lượng không liên tục. Ví dụ, bánh quay được sử dụng trong động cơ pitong bởi vì các nguồn năng lượng (mô-men xoắn từ động cơ) là không liên tục.Chúng cung cấp năng lượng ở mức vượt quá khả năng của một nguồn năng lượng. Điều này đạt được bằng cách thu thập năng lượng trong bánh đà theo thời gian và sau đó giải phóng năng lượng một cách nhanh chóng, với tốc độ vượt quá khả năng của nguồn năng lượng.Chúng kiểm soát định hướng của một hệ thống cơ khí. Trong các ứng dụng như vậy, xung lượng góc của một bánh đà là cố ý chuyển tải một khi năng lượng được chuyển đến hoặc từ bánh đà.",
+        "Dầu rãnh trượt Castrol Magna BD 68 là dầu máy được chế tạo từ dầu gốc khoáng tinh lọc và các phụ gia để kiểm soát đặc tính ma sát trong chuyển động bàn trượt của máy công cụ. Loại dầu rãnh trượt này có đặc tính ma sát tốt, độ bám dính và độ bền màng dầu cao nên có thể dùng được trong điều kiện tải trọng lớn và vận tốc trượt nhỏ đối với cả hai loại đường dẫn trượt thẳng đứng hoặc nằm ngang. Ngoài ra dầu này còn dùng được cho các hệ thống vít - me, các bánh răng của cơ cấu cấp liệu và các bàn phay được bôi trơn bằng dầu.",
       iamge: {
         iamge1:
           "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/4(9).jpg",
@@ -29,18 +29,18 @@ var list_products = [
     masp: "Sam0",
   },
   {
-    name: "Băng tải cao su nhật Cũ và Mới các loại",
-    company: "Băng tải",
+    name: "Dầu công nghiệp cao su nhật Cũ và Mới các loại",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/1(11).jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng tải cao su nhật Cũ và Mới các loại",
-      model: " Băng tải cao su nhật Cũ các loại",
+      ten: "Dầu công nghiệp cao su nhật Cũ và Mới các loại",
+      model: " Dầu công nghiệp cao su nhật Cũ các loại",
       tieuchuan: "Jis",
       xuatsu: "JAPAN",
       donggia: "",
@@ -58,17 +58,17 @@ var list_products = [
     masp: "Sam1",
   },
   {
-    name: "Băng tải cao su chịu nhiệt",
-    company: "Băng tải",
+    name: "Dầu công nghiệp cao su chịu nhiệt",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/Bang%20Keo%20CN/b%E1%BB%8Dc%20rulo%20cao%20su.png",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng tải cao su chịu nhiệt",
+      ten: "Dầu công nghiệp cao su chịu nhiệt",
       model: "",
       tieuchuan: "",
       xuatsu: "",
@@ -87,17 +87,17 @@ var list_products = [
     masp: "Sam2",
   },
   {
-    name: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-    company: "Băng tải",
+    name: "Rulo Bọc Cao Su,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/rulo-boc-cao-su.jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
+      ten: "Rulo Bọc Cao Su,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
       model: "Rulo bọc cao su",
       tieuchuan: "JIS",
       xuatsu: "Việt Nam",
@@ -116,23 +116,23 @@ var list_products = [
     masp: "Sam3",
   },
   {
-    name: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-    company: "Băng tải",
+    name: "Dầu công nghiệp Lưới,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/bang%20tai%20luoi%201.jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-      model: "Băng Tải Lưới,Conveyor",
+      ten: "Dầu công nghiệp Lưới,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+      model: "Dầu công nghiệp Lưới,Conveyor",
       tieuchuan: "JIS",
       xuatsu: "Việt Nam",
       donggia: "",
       baohanh: "6 Tháng",
-      modelkhac: "Băng Tải Lưới,Conveyor",
+      modelkhac: "Dầu công nghiệp Lưới,Conveyor",
       detailcontent:
         "Bánh đà là một thiết bị cơ khí quay được sử dụng để lưu trữ năng lượng quay. Bánh đà có mô men quán tính lớn, và do đó chống lại sự thay đổi tốc độ quay. Lượng năng lượng được lưu trữ trong một bánh đà tỉ lệ với bình phương tốc độ quay của nó. Năng lượng được chuyển giao cho một bánh đà bằng cách áp dụng mô men xoắn đối với nó, do đó gây ra tốc độ quay của nó, và do đó năng lượng lưu trữ của nó, gia tăng. Ngược lại, bánh đà giải phóng năng lượng được lưu trữ bằng cách áp mô-men xoắn đến tải cơ khí, kết quả làm tốc độ quay giảm.Chúng cung cấp năng lượng liên tục khi các nguồn năng lượng không liên tục. Ví dụ, bánh quay được sử dụng trong động cơ pitong bởi vì các nguồn năng lượng (mô-men xoắn từ động cơ) là không liên tục.Chúng cung cấp năng lượng ở mức vượt quá khả năng của một nguồn năng lượng. Điều này đạt được bằng cách thu thập năng lượng trong bánh đà theo thời gian và sau đó giải phóng năng lượng một cách nhanh chóng, với tốc độ vượt quá khả năng của nguồn năng lượng.Chúng kiểm soát định hướng của một hệ thống cơ khí. Trong các ứng dụng như vậy, xung lượng góc của một bánh đà là cố ý chuyển tải một khi năng lượng được chuyển đến hoặc từ bánh đà.",
       iamge: {
@@ -145,17 +145,17 @@ var list_products = [
     masp: "Sam4",
   },
   {
-    name: "Đắp cao su rulo, trục, con lăn cao su đưa phôi",
-    company: "Băng tải",
+    name: "Dầu bàn trượt Castrol Magna BD 68",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/4(9).jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Đắp cao su rulo, trục, con lăn cao su đưa phôi",
+      ten: "Dầu bàn trượt Castrol Magna BD 68",
      model: "Rulo-CR-01",
     tieuchuan: "ISO 9001:2015",
     xuatsu: "Việt Nam",
@@ -174,18 +174,18 @@ var list_products = [
     masp: "Sam5",
   },
   {
-    name: "Băng tải cao su nhật Cũ và Mới các loại",
-    company: "Băng tải",
+    name: "Dầu công nghiệp cao su nhật Cũ và Mới các loại",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/tin%20tuc/1(11).jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng tải cao su nhật Cũ và Mới các loại",
-      model: " Băng tải cao su nhật Cũ các loại",
+      ten: "Dầu công nghiệp cao su nhật Cũ và Mới các loại",
+      model: " Dầu công nghiệp cao su nhật Cũ các loại",
       tieuchuan: "Jis",
       xuatsu: "JAPAN",
       donggia: "",
@@ -203,17 +203,17 @@ var list_products = [
     masp: "Sam6",
   },
   {
-    name: "Băng tải cao su chịu nhiệt",
-    company: "Băng tải",
+    name: "Dầu công nghiệp cao su chịu nhiệt",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/Bang%20Keo%20CN/b%E1%BB%8Dc%20rulo%20cao%20su.png",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng tải cao su chịu nhiệt",
+      ten: "Dầu công nghiệp cao su chịu nhiệt",
       model: "",
       tieuchuan: "",
       xuatsu: "",
@@ -232,17 +232,17 @@ var list_products = [
     masp: "Sam7",
   },
   {
-    name: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-    company: "Băng tải",
+    name: "Rulo Bọc Cao Su,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/rulo-boc-cao-su.jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Rulo Bọc Cao Su,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
+      ten: "Rulo Bọc Cao Su,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
       model: "Rulo bọc cao su",
       tieuchuan: "JIS",
       xuatsu: "Việt Nam",
@@ -261,23 +261,23 @@ var list_products = [
     masp: "Sam8",
   },
   {
-    name: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-    company: "Băng tải",
+    name: "Dầu công nghiệp Lưới,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+    company: "Dầu công nghiệp",
     img: "https://maycongnghiep.net.vn/hinh-anh/images/bang%20tai%20luoi%201.jpg",
     price: "Liên hệ",
     rateCount: 26,
     promo: {
-      name: "bangtai",
+      name: "daucongnghiep",
       value: "0",
     },
     detail: {
-      ten: "Băng Tải Lưới,Conveyor, Nối Băng Tải, Dán Băng Tải, Bọc Cao Su Rulo",
-      model: "Băng Tải Lưới,Conveyor",
+      ten: "Dầu công nghiệp Lưới,Conveyor, Nối Dầu công nghiệp, Dán Dầu công nghiệp, Bọc Cao Su Rulo",
+      model: "Dầu công nghiệp Lưới,Conveyor",
       tieuchuan: "JIS",
       xuatsu: "Việt Nam",
       donggia: "",
       baohanh: "6 Tháng",
-      modelkhac: "Băng Tải Lưới,Conveyor",
+      modelkhac: "Dầu công nghiệp Lưới,Conveyor",
       detailcontent:
         "Bánh đà là một thiết bị cơ khí quay được sử dụng để lưu trữ năng lượng quay. Bánh đà có mô men quán tính lớn, và do đó chống lại sự thay đổi tốc độ quay. Lượng năng lượng được lưu trữ trong một bánh đà tỉ lệ với bình phương tốc độ quay của nó. Năng lượng được chuyển giao cho một bánh đà bằng cách áp dụng mô men xoắn đối với nó, do đó gây ra tốc độ quay của nó, và do đó năng lượng lưu trữ của nó, gia tăng. Ngược lại, bánh đà giải phóng năng lượng được lưu trữ bằng cách áp mô-men xoắn đến tải cơ khí, kết quả làm tốc độ quay giảm.Chúng cung cấp năng lượng liên tục khi các nguồn năng lượng không liên tục. Ví dụ, bánh quay được sử dụng trong động cơ pitong bởi vì các nguồn năng lượng (mô-men xoắn từ động cơ) là không liên tục.Chúng cung cấp năng lượng ở mức vượt quá khả năng của một nguồn năng lượng. Điều này đạt được bằng cách thu thập năng lượng trong bánh đà theo thời gian và sau đó giải phóng năng lượng một cách nhanh chóng, với tốc độ vượt quá khả năng của nguồn năng lượng.Chúng kiểm soát định hướng của một hệ thống cơ khí. Trong các ứng dụng như vậy, xung lượng góc của một bánh đà là cố ý chuyển tải một khi năng lượng được chuyển đến hoặc từ bánh đà.",
       iamge: {
