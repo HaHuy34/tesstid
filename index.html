@@ -52,12 +52,12 @@
 </head>
 
 <body>
-	<header>
+	<header style="position: fixed; top: 0; right: 0; left: 0; z-index: 99999999999;">
 		<script> addTopNav(); </script>
 		<script> addHeader(); </script>
 	</header>
 
-	<main>
+	<main style="margin-top: 200px;">
 		<div class="container">
 			<div class="swiper mySwiper">
 				<div class="swiper-wrapper">
@@ -111,7 +111,7 @@
 
 			<br>
 
-			<div class="flexContain">
+			<div class="flexContain" style="display: none;">
 
 				<div class="pricesRangeFilter dropdown" style="display: none;">
 					<button class="dropbtn">Giá tiền</button>
@@ -140,7 +140,6 @@
 					<h3>Xóa bộ lọc</h3>
 				</a>
 			</div> <!-- Những bộ lọc đã chọn -->
-			<hr>
 
 			<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
 			<div class="contain-products" style="display:none">

@@ -147,16 +147,16 @@ $(document).ready(function () {
     //   div
     // );
     addKhungSanPham(
-      "MÁY ĐO",
+      "DẦU NHỚT MOBIL",
       blue,
-      ["promo=maydoluongcacloai", "sort=rateCount-decrease"],
+      ["promo=daunhotmobil", "sort=rateCount-decrease"],
       soLuong,
       div
     );
     addKhungSanPham(
-      "DẦU CÔNG NGHIỆP",
+      "DẦU NHỚT MOTUL",
       yellow_red,
-      ["promo=daucongnghiep", "sort=rateCount-decrease"],
+      ["promo=daunhotmobil", "sort=rateCount-decrease"],
       soLuong,
       div
     );
@@ -215,7 +215,7 @@ $(document).ready(function () {
   addAllChoosedFilter();
 };
 
-var soLuongSanPhamMaxTrongMotTrang = 15;
+var soLuongSanPhamMaxTrongMotTrang = 8;
 
 // =========== Đọc dữ liệu từ url ============
 var filtersFromUrl = {
