@@ -106,8 +106,10 @@ function phanTich_URL_chiTietSanPham() {
   // Cập nhật hình
   var hinh = divChiTiet.getElementsByClassName("picture")[0];
   hinh = hinh.getElementsByTagName("img")[0];
+  hinh.id = "sourceImg";
   hinh.src = sanPhamHienTai.img;
   document.getElementById("bigimg").src = sanPhamHienTai.img;
+  enableZoom(hinh);
 
   // Hình nhỏ
   addSmallImg("img/products/huawei-mate-20-pro-green-600x600.jpg");
@@ -262,22 +264,24 @@ function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
   ele.innerHTML += s;
 
   // Khởi tạo OwlCarousel cho phần này
-  $(ele).find(".owl-carousel").owlCarousel({
-    items: 4,          // số sp/slide
-    margin: 15,
-    loop: true,
-    nav: true,
-    dots: true,
-    autoplay: true,
-    autoplayTimeout: 4000,
-    smartSpeed: 600,
-    responsive: {
-      0: { items: 1 },
-      576: { items: 2 },
-      992: { items: 3 },
-      1200: { items: 4 }
-    }
-  });
+  $(ele)
+    .find(".owl-carousel")
+    .owlCarousel({
+      items: 4, // số sp/slide
+      margin: 15,
+      loop: true,
+      nav: true,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      smartSpeed: 600,
+      responsive: {
+        0: { items: 1 },
+        576: { items: 2 },
+        992: { items: 3 },
+        1200: { items: 4 },
+      },
+    });
 }
 
 /// gợi ý sản phẩm
@@ -343,4 +347,28 @@ function suggestion() {
     let div = document.getElementById("goiYSanPham");
     addKhungSanPham(sanPhamTuongTu, "SẢN PHẨM TƯƠNG TỰ", ["", ""], div);
   }
+}
+
+function enableZoom(imgElement) {
+  const zoom = document.getElementById("zoomCircle");
+
+  imgElement.addEventListener("mousemove", function (e) {
+    const rect = imgElement.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const percentX = (x / rect.width) * 100;
+    const percentY = (y / rect.height) * 100;
+
+    zoom.style.display = "block";
+    zoom.style.left = e.pageX - zoom.offsetWidth / 2 +-200+ "px";
+    zoom.style.top = e.pageY - zoom.offsetHeight / 2 + -250 + "px"; // lệch xuống 10px
+
+    zoom.style.backgroundImage = `url(${imgElement.src})`;
+    zoom.style.backgroundPosition = `${percentX}% ${percentY}%`;
+  });
+
+  imgElement.addEventListener("mouseleave", function () {
+    zoom.style.display = "none";
+  });
 }
