@@ -100,16 +100,20 @@
 
 /* Content */
 .header .content {
-	width: calc(100% - 40%);
+	width: 60%;
 	display: flex;
+	height: 50px;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: end;
 }
+
+
 
 /* Search */
 .search-header {
 	float: left;
-	width: 85%;
+	width: 90%;
+	height: 100%;
 }
 
 .swiper.mySwiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
@@ -117,7 +121,7 @@
 }
 
 .policy {
-	margin: 50px 47px 0 47px;
+	margin-top:50px;
 }
 
 .policy ul {
@@ -151,7 +155,7 @@ form.input-search {
 	background: #ddd;
 	border: 1px solid #bbb;
 	border-radius: 10px;
-	height: 35px;
+	height: 100%;
 	overflow: hidden;
 	width: 100%;
 	/* điều chỉnh width của ô tìm kiếm trên header ở đây */
@@ -328,7 +332,8 @@ form.input-search {
 /* Cart */
 .cart {
 	float: left;
-	display: table-cell;
+	display: none;
+	/* display: table-cell; */
 	/* border-left: 1px solid #bbb; */
 	margin: 0 15px;
 	padding-left: 5px;

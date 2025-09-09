@@ -285,20 +285,50 @@
 }
 
 .bx-phone-outgoing {
-  display: inline-block;
-  animation: lacLac 2s infinite; /* tổng thời gian 3s */
+    display: inline-block;
+    animation: lacLac 2s infinite;
+    /* tổng thời gian 3s */
 }
 
 @keyframes lacLac {
-  0%   { transform: rotate(0deg); }
-  10%  { transform: rotate(15deg); }
-  20%  { transform: rotate(-15deg); }
-  30%  { transform: rotate(10deg); }
-  40%  { transform: rotate(-10deg); }
-  50%  { transform: rotate(5deg); }
-  60%  { transform: rotate(-5deg); }
-  70%  { transform: rotate(0deg); }  /* kết thúc phần lắc */
-  100% { transform: rotate(0deg); }  /* giữ nguyên để nghỉ */
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(15deg);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+    }
+
+    30% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    /* kết thúc phần lắc */
+    100% {
+        transform: rotate(0deg);
+    }
+
+    /* giữ nguyên để nghỉ */
 }
 
 .chitietSanpham .picture {
@@ -306,21 +336,24 @@
 }
 
 .chitietSanpham .picture img {
-  cursor: crosshair;
+    cursor: crosshair;
 }
 
 /* modal zoom */
 #zoomCircle {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;   /* hình tròn */
-  border: 2px solid #aaa;
-  background-repeat: no-repeat;
-  background-size: 200%; /* zoom x2 */
-  pointer-events: none;  /* không chặn chuột */
-  display: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* hình tròn */
+    border: 2px solid #aaa;
+    background-repeat: no-repeat;
+    background-size: 200%;
+    /* zoom x2 */
+    pointer-events: none;
+    /* không chặn chuột */
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -412,4 +445,158 @@
     float: left;
     margin: 5px 0;
     color: #333;
+}
+
+
+
+.mockup-buy-product  {
+    position: fixed;
+    top: 50%;
+    left: 50%;  
+    /* transform: translate(-50%, -50%); */
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    z-index: 9999999999999999;
+}
+
+.mockup-buy-product .order-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mockup-buy-product .order-header h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.mockup-buy-product .order-header span {
+    color: #0077cc;
+}
+
+.mockup-buy-product .order-content {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 20px;
+}
+
+.mockup-buy-product .product {
+    background: #f9fbfd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.mockup-buy-product .product img {
+    max-width: 120px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.mockup-buy-product .product h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.mockup-buy-product .product .hotline {
+    font-size: 15px;
+    font-weight: bold;
+    color: #e60000;
+    margin-bottom: 10px;
+}
+
+.mockup-buy-product .product .desc {
+    font-size: 14px;
+    color: #555;
+}
+
+.mockup-buy-product .customer-form h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.mockup-buy-product .customer-form select,
+.mockup-buy-product .customer-form input,
+.mockup-buy-product .customer-form textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Flex hàng ngang */
+.mockup-buy-product .form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.mockup-buy-product .form-row .col {
+    flex: 1;
+}
+
+.mockup-buy-product .gender-row {
+    display: flex;
+    gap: 20px;
+    margin: 8px 0;
+}
+
+.mockup-buy-product .gender-row label {
+    font-size: 14px;
+    color: #444;
+}
+
+.mockup-buy-product .btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, #0077cc, #00aaff);
+    color: #fff;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mockup-buy-product .btn-submit:hover {
+    opacity: 0.9;
+}
+
+.mockup-buy-product {
+  display: none; /* Ẩn mặc định */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* nền mờ đen */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.mockup-buy-product.active {
+  display: flex; /* Hiện khi có class active */
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
 }

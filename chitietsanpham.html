@@ -8,8 +8,8 @@
     <title>Thế giới điện thoại</title>
     <link rel="shortcut icon" href="img/logo1.jpeg" />
     <!-- Boxicons CSS -->
-	<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-	<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
     <!-- Load font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
@@ -89,20 +89,81 @@
                     </div>
                     <div class="area_order">
                         <!-- nameProduct là biến toàn cục được khởi tạo giá trị trong phanTich_URL_chiTietSanPham -->
-                        <a class="buy_now" onclick="themVaoGioHang(maProduct, nameProduct);">
-                            <b><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</b>
+                        <!-- onclick="themVaoGioHang(maProduct, nameProduct);  " -->
+                      <a class="buy_now"onclick="openBuyNow()">
+                         
+                       <b><i class="fa fa-cart-plus"></i> Mua ngay</b>  
                         </a>
-                        <a href="tel:0983976896" >
-                            <div class="phone-buy-now" style="display: flex;padding: 10px 10px 10px 20px; border-radius: 13px;border: 1px dashed #ccc;
+                        <a href="tel:0983976896">
+                            <div class="phone-buy-now"
+                                style="display: flex;padding: 10px 10px 10px 20px; border-radius: 13px;border: 1px dashed #ccc;
                             align-items: center; gap: 20px; font-size: 18px; color: #3b6610;font-weight: 600; margin-top: 20px;">
-                            <i class='bx  bx-phone-outgoing' style="font-size: 37px; color: #009ada;" ></i> 
+                                <i class='bx  bx-phone-outgoing' style="font-size: 37px; color: #009ada;"></i>
                                 Gọi ngay: <span style="color: red; font-size: 23px;">0983 976 896</span>
                             </div>
                         </a>
 
 
                     </div>
-                    
+
+                <div class="mockup-buy-product" id="buyNowPopup">
+                    <span class="close-popup" onclick="closeBuyNow()">&times;</span>
+                        <div class="order-box">
+                            <div class="order-header">
+                                <h2>Đặt mua <span>Dầu động cơ hàng hải Mobilgard 300C</span></h2>
+                            </div>
+
+                            <div class="order-content">
+                                <!-- Sản phẩm -->
+                                <div class="product">
+                                    <img src="https://via.placeholder.com/120" alt="Mobilgard 300C">
+                                    <h3>Dầu động cơ hàng hải Mobilgard 300C</h3>
+                                    <div class="hotline">Hotline: 0911.1616.38</div>
+                                    <p class="desc">Vui lòng nhập đúng số điện thoại để chúng tôi liên hệ xác nhận đơn
+                                        hàng trước khi giao.</p>
+                                </div>
+
+                                <!-- Form -->
+                                <div class="customer-form">
+                                    <h4>Thông tin người mua</h4>
+
+                                    <!-- Anh/Chị -->
+                                    <div class="gender-row">
+                                        <label><input type="radio" name="gender"> Anh</label>
+                                        <label><input type="radio" name="gender"> Chị</label>
+                                    </div>
+
+                                    <!-- Họ tên + SĐT -->
+                                    <div class="form-row">
+                                        <input class="col" type="text" placeholder="Họ và tên">
+                                        <input class="col" type="text" placeholder="Số điện thoại">
+                                    </div>
+
+                                    <input type="email" placeholder="Địa chỉ email">
+
+                                    <!-- Tỉnh/TP + Quận/Huyện + Xã/Phường -->
+                                    <div class="form-row">
+                                        <select id="province" class="col">
+                                            <option value="">Tỉnh/Thành phố</option>
+                                        </select>
+                                        <select id="district" class="col">
+                                            <option value="">Quận/Huyện</option>
+                                        </select>
+                                        <select id="ward" class="col">
+                                            <option value="">Xã/Phường</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="text" placeholder="Số nhà, tên đường">
+                                    <textarea placeholder="Ghi chú đơn hàng (Không bắt buộc)"></textarea>
+
+                                    <button class="btn-submit">ĐẶT HÀNG NGAY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="info_product">
                     <h2>Thông số kỹ thuật</h2>

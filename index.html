@@ -75,35 +75,10 @@
 					<span></span>
 				</div>
 			</div>
-
-			<div class="policy">
-				<ul>
-					<li>
-						<img src="./img/banners/badgepng.png" alt="uy-tín-chất-lượng">
-						<a href="#">
-							<span>Uy tín về <br><strong>CHẤT LƯỢNG</strong></span>
-						</a>
-					</li>
-					<li>
-						<img src="./img/banners/transport.png" alt="sp">
-						<a href="#">
-							<span>Giao hàng tận nơi <br><strong>63 TỈNH THÀNH</strong></span>
-						</a>
-					</li>
-					<li>
-						<img style="height: 90px !important;" src="./img/banners/Return.jpg" alt="sp">
-						<a href="#">
-							<span>Chính sách đổi trả <br><strong>LINHHOẠT</strong></span>
-						</a>
-					</li>
-					<li>
-						<img src="./img/banners/guarantee.jpg" alt="sp">
-						<a href="#">
-							<span>Bảo hành <br><strong>CHÍNH HÃNG</strong></span>
-						</a>
-					</li>
-				</ul>
+			<div class="title-products">
+				<h2>Danh sách sản phẩm</h2>
 			</div>
+
 
 			<!-- End Banner -->
 
@@ -146,10 +121,10 @@
 				<div class="filterName" style="display: none;">
 					<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
 				</div> <!-- End FilterName -->
-<div class="row">
-	
-</div>
-				<div id="products" class="homeproduct group flexContain row" >
+				<div class="row">
+
+				</div>
+				<div id="products" class="homeproduct group flexContain row">
 					<div id="khongCoSanPham">
 						<i class="fa fa-times-circle"></i>
 						Không có sản phẩm nào
@@ -167,9 +142,46 @@
 		<script>
 			addContainTaiKhoan(); addPlc();
 		</script>
+		<div class="title-products container">
+			<h2>Chính sách và quyền lợi</h2>
+			
+		</div>
+		<div class="policy container">
+			<ul>
+				<li>
+					<img src="./img/banners/badgepng.png" alt="uy-tín-chất-lượng">
+					<a href="#">
+						<span>Uy tín về <br><strong>CHẤT LƯỢNG</strong></span>
+					</a>
+				</li>
+				<li>
+					<img src="./img/banners/transport.png" alt="sp">
+					<a href="#">
+						<span>Giao hàng tận nơi <br><strong>63 TỈNH THÀNH</strong></span>
+					</a>
+				</li>
+				<li>
+					<img style="height: 90px !important;" src="./img/banners/Return.jpg" alt="sp">
+					<a href="#">
+						<span>Chính sách đổi trả <br><strong>LINHHOẠT</strong></span>
+					</a>
+				</li>
+				<li>
+					<img src="./img/banners/guarantee.jpg" alt="sp">
+					<a href="#">
+						<span>Bảo hành <br><strong>CHÍNH HÃNG</strong></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="title-products container">
+			<h2>Hãng hợp tác </h2>
+		</div>
 		<div class="companyMenu group flexContain owl-carousel container"></div>
 	</main>
-	<div><script>initContactButtons();</script></div>
+	<div>
+		<script>initContactButtons();</script>
+	</div>
 	<footer>
 		<script>addFooter();</script>
 	</footer>

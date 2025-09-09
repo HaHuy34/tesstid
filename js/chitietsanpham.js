@@ -16,6 +16,17 @@ window.onload = function () {
 
   // Thêm gợi ý sản phẩm
   sanPhamHienTai && suggestion();
+  // Init
+  loadProvinces();
+  document.getElementById("province").addEventListener("change", function () {
+    let provinceCode = this.value;
+    if (provinceCode) loadDistricts(provinceCode);
+  });
+
+  document.getElementById("district").addEventListener("change", function () {
+    let districtCode = this.value;
+    if (districtCode) loadWards(districtCode);
+  });
 };
 
 function khongTimThaySanPham() {
@@ -361,7 +372,7 @@ function enableZoom(imgElement) {
     const percentY = (y / rect.height) * 100;
 
     zoom.style.display = "block";
-    zoom.style.left = e.pageX - zoom.offsetWidth / 2 +-200+ "px";
+    zoom.style.left = e.pageX - zoom.offsetWidth / 2 + -200 + "px";
     zoom.style.top = e.pageY - zoom.offsetHeight / 2 + -250 + "px"; // lệch xuống 10px
 
     zoom.style.backgroundImage = `url(${imgElement.src})`;
@@ -372,3 +383,72 @@ function enableZoom(imgElement) {
     zoom.style.display = "none";
   });
 }
+
+// Load Tỉnh/TP
+async function loadProvinces(provinceCode) {
+  console.log(provinceCode, "provinceCode");
+  const res = await fetch("https://provinces.open-api.vn/api/p/");
+  const data = await res.json();
+
+  let provinceSelect = document.getElementById("province");
+  data.forEach((p) => {
+    let opt = document.createElement("option");
+    opt.value = p.code;
+    opt.textContent = p.name;
+    provinceSelect.appendChild(opt);
+  });
+}
+
+// Load Quận/Huyện
+async function loadDistricts(provinceCode) {
+  const res = await fetch(
+    `https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`
+  );
+  const data = await res.json();
+
+  let districtSelect = document.getElementById("district");
+  districtSelect.innerHTML = "<option value=''>Quận/Huyện</option>";
+  document.getElementById("ward").innerHTML =
+    "<option value=''>Xã/Phường</option>";
+
+  data.districts.forEach((d) => {
+    let opt = document.createElement("option");
+    opt.value = d.code;
+    opt.textContent = d.name;
+    districtSelect.appendChild(opt);
+  });
+}
+
+// Load Xã/Phường
+async function loadWards(districtCode) {
+  const res = await fetch(
+    `https://provinces.open-api.vn/api/d/${districtCode}?depth=2`
+  );
+  const data = await res.json();
+  let wardSelect = document.getElementById("ward");
+  wardSelect.innerHTML = "<option value=''>Xã/Phường</option>";
+
+  data.wards.forEach((w) => {
+    let opt = document.createElement("option");
+    opt.value = w.code;
+    opt.textContent = w.name;
+    wardSelect.appendChild(opt);
+  });
+}
+
+// Event
+document.getElementById("province").addEventListener("change", function () {
+  if (this.value) loadDistricts(this.value);
+});
+document.getElementById("district").addEventListener("change", function () {
+  if (this.value) loadWards(this.value);
+});
+
+function openBuyNow() {
+  document.getElementById("buyNowPopup").classList.add("active");
+}
+
+function closeBuyNow() {
+  document.getElementById("buyNowPopup").classList.remove("active");
+}
+
