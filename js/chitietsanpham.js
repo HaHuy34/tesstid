@@ -36,6 +36,7 @@ function khongTimThaySanPham() {
 
 function phanTich_URL_chiTietSanPham() {
   nameProduct = decodeURIComponent(window.location.href.split("?")[1]); // lấy tên
+  
   if (!nameProduct) return khongTimThaySanPham();
 
   // tách theo dấu '-' vào gắn lại bằng dấu ' ', code này giúp bỏ hết dấu '-' thay vào bằng khoảng trắng.
@@ -445,10 +446,42 @@ document.getElementById("district").addEventListener("change", function () {
 });
 
 function openBuyNow() {
-  document.getElementById("buyNowPopup").classList.add("active");
+  if (!sanPhamHienTai) return;
+
+  const popup = document.getElementById("buyNowPopup");
+  const box = document.getElementById("buyNowBox");
+
+  popup.classList.add("active");
+
+  // Reset animation mở
+  box.classList.remove("Jelly", "FadeOutJelly");
+  void box.offsetWidth;
+  box.classList.add("Jelly");
+
+  // Đổ dữ liệu sản phẩm
+  popup.querySelector(".order-header h2 span").textContent = sanPhamHienTai.name;
+
+  const img = popup.querySelector(".product img");
+  img.src = sanPhamHienTai.img;
+  img.alt = sanPhamHienTai.name;
+
+  popup.querySelector(".product h3").textContent = sanPhamHienTai.name;
 }
 
 function closeBuyNow() {
-  document.getElementById("buyNowPopup").classList.remove("active");
+  const popup = document.getElementById("buyNowPopup");
+  const box = document.getElementById("buyNowBox");
+
+  // Thay animation mở bằng animation tắt
+  box.classList.remove("Jelly");
+  box.classList.add("FadeOutJelly");
+
+  // Sau khi animation kết thúc thì ẩn popup
+  box.addEventListener("animationend", function handler() {
+    popup.classList.remove("active");
+    box.classList.remove("FadeOutJelly");
+    box.removeEventListener("animationend", handler);
+  });
 }
+
 

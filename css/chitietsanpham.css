@@ -449,71 +449,58 @@
 
 
 
-.mockup-buy-product  {
-    position: fixed;
-    top: 50%;
-    left: 50%;  
-    /* transform: translate(-50%, -50%); */
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-    z-index: 9999999999999999;
-}
+.mockup-buy-product {}
 
-.mockup-buy-product .order-header {
+/* .mockup-buy-product .order-header {
     text-align: center;
     margin-bottom: 20px;
-}
+} */
 
 .mockup-buy-product .order-header h2 {
-    font-size: 22px;
-    color: #333;
-}
-
-.mockup-buy-product .order-header span {
-    color: #0077cc;
+    font-size: 26px;
+    margin: 0 !important;
 }
 
 .mockup-buy-product .order-content {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     gap: 20px;
+    padding: 0px 40px 40px 40px;
 }
 
 .mockup-buy-product .product {
-    background: #f9fbfd;
+    background: #eef1f3;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
 }
 
 .mockup-buy-product .product img {
-    max-width: 120px;
+    max-width: 270px;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .mockup-buy-product .product h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 6px;
     color: #333;
 }
 
 .mockup-buy-product .product .hotline {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     color: #e60000;
     margin-bottom: 10px;
 }
 
 .mockup-buy-product .product .desc {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
 }
 
 .mockup-buy-product .customer-form h4 {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 8px;
     color: #444;
 }
@@ -526,7 +513,7 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* Flex hàng ngang */
@@ -541,12 +528,12 @@
 
 .mockup-buy-product .gender-row {
     display: flex;
-    gap: 20px;
+    gap: 45px;
     margin: 8px 0;
 }
 
 .mockup-buy-product .gender-row label {
-    font-size: 14px;
+    font-size: 16px;
     color: #444;
 }
 
@@ -555,7 +542,7 @@
     background: linear-gradient(90deg, #0077cc, #00aaff);
     color: #fff;
     padding: 14px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     border-radius: 8px;
@@ -569,34 +556,109 @@
 }
 
 .mockup-buy-product {
-  display: none; /* Ẩn mặc định */
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* nền mờ đen */
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
+    display: none;
+    /* Ẩn mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* nền mờ đen */
+    z-index: 99999999;
+    justify-content: center;
+    align-items: center;
 }
 
 .mockup-buy-product.active {
-  display: flex; /* Hiện khi có class active */
+    display: flex;
 }
 
 .popup-content {
-  background: #fff;
-  padding: 20px;
-  width: 400px;
-  max-width: 90%;
-  border-radius: 10px;
-  position: relative;
+    background: #fff;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 10px;
+    position: relative;
 }
 
 .close-popup {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
+    font-size: 34px;
+    /* font-weight: bold; */
+    color: #333;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding-bottom: 6px;
+    transition: all .3s;
+}
+
+.close-popup:hover {
+    background-color: red;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.order-box {
+    background: #fff;
+    overflow: hidden;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+.customer-form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.customer-form label input {
+    cursor: pointer;
+}
+
+.name-pr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00aaff;
+    color: #fff !important;
+    padding: 14px;
+    margin-bottom: 21px;
+}
+
+
+/* Popup đã có style rồi, chỉ bổ sung hiệu ứng Jelly */
+.Animate-item.Jelly {
+  animation-duration: 0.8s;
+  animation-name: jelly;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+@keyframes jelly {
+  0% { opacity: 0; transform: scale(0.7); }
+  30% { transform: scale(1.1); }
+  60% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.Animate-item.FadeOutJelly {
+  animation-duration: 0.6s;
+  animation-name: fadeOutJelly;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOutJelly {
+  0% { opacity: 1; transform: scale(1); }
+  40% { transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(0.7); }
 }
