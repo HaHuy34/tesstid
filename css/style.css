@@ -34,13 +34,13 @@ hr {
     background-color: #ddd;
     border-top: 1px solid #ddd;
 }
-
-@media (min-width: 992px) {
+/* 
+/* @media (min-width: 992px) {
     .col-lg-3 {
         flex: 0 0 auto;
         width: 23% !important;
     }
-}
+} */ */
 
 a:hover {
     color: #000 !important;
@@ -192,7 +192,7 @@ a.call-phone:hover {
     text-transform: uppercase;
     font-weight: bold;
     position: relative;
-    margin: 40px 0 20px 0;
+    margin: 40px 0 0px 0;
     width: fit-content;
 }
 

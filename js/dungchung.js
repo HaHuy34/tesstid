@@ -544,23 +544,15 @@ function addProduct(p, ele, returnString, isGrid = true) {
 }
 
 // Thêm topnav vào trang
-function addTopNav() {
+function addTopNavs() {
   document.write(`    
 	<div class="top-nav group">
         <div class="container sections">
-            <div class="social-top-nav">
-                <a class="fa fa-facebook"></a>
-                <a class="fa fa-twitter"></a>
-                <a class="fa fa-google"></a>
-                <a class="fa fa-youtube"></a>
-            </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain" style="margin-bottom: 0 !important;">
                 <li><a href="index.html"><i class="fa fa-home"></i> Trang chủ</a></li>
                 <li><a href="tintuc.html"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
-                <li><a href="tuyendung.html"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
                 <li><a href="gioithieu.html"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
-                <li><a href="trungtambaohanh.html"><i class="fa fa-wrench"></i> Bảo hành</a></li>
                 <li><a href="lienhe.html"><i class="fa fa-phone"></i> Liên hệ</a></li>
             </ul> <!-- End Quick link -->
         </div><!-- End Section -->
@@ -569,61 +561,66 @@ function addTopNav() {
 
 // Thêm header
 function addHeader() {
-  document.write(`   
-        <div class="header group">
-        <div class="container">
-        <div class="logo">
-            <a href="index.html">
-                <img src="img/logo.jpeg" alt="Logo trang chủ" title="Trang chủ">
-            </a>
-        </div> <!-- End Logo -->
-
-        <div class="content">
-            <div class="search-header" style="position: relative; top: 1px;">
-                <form class="input-search" method="get" action="index.html">
-                    <div class="autocomplete">
-                        <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                            Tìm kiếm
-                        </button>
-                    </div>
-                </form> <!-- End Form search -->
-                <div class="tags" style="display: none;">
-                    <strong>Từ khóa: </strong>
-                </div>
-            </div> 
-
-            <div class="tools-member">
-               <!-- <div class="member">
-                    <a onclick="checkTaiKhoan()">
-                        <i class="fa fa-user"></i>
-                        Tài khoản
-                    </a>
-                    <div class="menuMember hide">
-                        <a href="nguoidung.html">Trang người dùng</a>
-                        <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
-                    </div>
-
-                </div>   -->
-
-                <div class="cart">
-                    <a href="">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="cart-number"></span>
-                    </a>
-                </div> <!-- End Cart -->
-
-                <!--<div class="check-order">
-                    <a>
-                        <i class="fa fa-truck"></i>
-                        <span>Đơn hàng</span>
-                    </a>
-                </div> -->
-            </div><!-- End Tools Member -->
-        </div> <!-- End Content -->
+  document.write(`   <div class="header-main">  
+    <div class="top-header container">
+  <div class="logo-section">
+    <a href="index.html">
+      <img src="./img/logo.jpeg" alt="">
+    </a>
+    <!-- <h4 class="logo-title-main">CÔNG TY TNHH THƯƠNG MẠI <br> KỸ THUẬT CÔNG NGHIỆP MATRIXQ</h4> -->
+  </div>
+  <div class="info-section">
+    <div class="info-item">
+      <i class="fas fa-clock"></i>
+      <span>Thời gian làm việc<br><strong>07:30 - 16:30</strong></span>
     </div>
-        </div>  
+    <div class="info-item">
+      <i class="fas fa-envelope"></i>
+      <span>Email liên hệ<br><strong>salesmaycongnghiep@gmail.com</strong></span>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>Hệ thống cửa hàng<br><strong>Tìm điểm bán hàng</strong></span>
+    </div>
+    <div class="info-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
+        class="flag-icon">
+      <span>Tiếng Việt</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Navigation -->
+<nav class="main-nav">
+  <div class="container link-main-nav">
+    <form class="input-search" method="get" action="index.html">
+      <div class="autocomplete">
+        <input id="search-box" name="search" autocomplete="off" type="text"
+          placeholder="Nhập từ khóa tìm kiếm...">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+    <div class="tags" style="display: none;">
+      <strong>Từ khóa: </strong>
+    </div>
+    <div class="cart" style="display: none;">
+      <a href="">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-number"></span>
+      </a>
+    </div>
+    <ul>
+      <li><a href="#" class="active">Trang chủ</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Tin tức</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+
+  </div>
+</nav>
+    </div>
 	 <!-- End Header -->`);
 }
 
@@ -674,7 +671,7 @@ function addFooter() {
 `);
 }
 
-// Nhắn tin 
+// Nhắn tin
 function initContactButtons() {
   // Thông tin mặc định (bạn thay số & link ở đây)
   const zaloLink = "https://zalo.me/0123456789";
@@ -765,7 +762,6 @@ function initContactButtons() {
   // Thêm vào body
   document.body.appendChild(container);
 }
-
 
 // Thêm contain Taikhoan
 function addContainTaiKhoan() {
@@ -1091,3 +1087,13 @@ function getThongTinSanPhamFrom_TheGioiDiDong() {
 //     $(target).fadeIn(600);
 
 // });
+
+window.addEventListener("scroll", function () {
+  const nav = document.querySelector(".main-nav");
+  if (window.scrollY > 100) {
+    // cuộn xuống 100px thì nav dính
+    nav.classList.add("fixed-nav");
+  } else {
+    nav.classList.remove("fixed-nav");
+  }
+});

@@ -385,6 +385,75 @@ function enableZoom(imgElement) {
   });
 }
 
+// Check form
+function validateForm() {
+    let gender = document.querySelector("input[name='gender']:checked");
+    let name = document.querySelector("input[placeholder='Họ và tên']").value.trim();
+    let phone = document.querySelector("input[placeholder='Số điện thoại']").value.trim();
+    let email = document.querySelector("input[type='email']").value.trim();
+    let province = document.getElementById("province").value;
+    let district = document.getElementById("district").value;
+    let ward = document.getElementById("ward").value;
+    let address = document.querySelector("input[placeholder='Số nhà, tên đường']").value.trim();
+
+    // Regex kiểm tra số điện thoại VN (10 số, bắt đầu từ 0)
+    let phoneRegex = /^0\d{9}$/;
+    // Regex kiểm tra email
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!gender) {
+        Swal.fire("Thiếu thông tin", "Vui lòng chọn Anh/Chị", "warning");
+        return false;
+    }
+    if (name === "") {
+        Swal.fire("Thiếu thông tin", "Vui lòng nhập họ và tên", "warning");
+        return false;
+    }
+    if (!phoneRegex.test(phone)) {
+        Swal.fire("Sai định dạng", "Số điện thoại phải có 10 số và bắt đầu bằng 0", "error");
+        return false;
+    }
+    if (!emailRegex.test(email)) {
+        Swal.fire("Sai định dạng", "Vui lòng nhập email hợp lệ", "error");
+        return false;
+    }
+    if (province === "") {
+        Swal.fire("Thiếu thông tin", "Vui lòng chọn Tỉnh/Thành phố", "warning");
+        return false;
+    }
+    if (district === "") {
+        Swal.fire("Thiếu thông tin", "Vui lòng chọn Quận/Huyện", "warning");
+        return false;
+    }
+    if (ward === "") {
+        Swal.fire("Thiếu thông tin", "Vui lòng chọn Xã/Phường", "warning");
+        return false;
+    }
+    if (address === "") {
+        Swal.fire("Thiếu thông tin", "Vui lòng nhập số nhà, tên đường", "warning");
+        return false;
+    }
+
+    // Nếu ok thì hiện thông báo đẹp
+    Swal.fire({
+        title: "🎉 Đặt hàng thành công!",
+        text: "Chúng tôi sẽ liên hệ với bạn sớm.",
+        icon: "success",
+        confirmButtonText: "OK"
+    });
+
+    return true;
+}
+
+// Gắn sự kiện khi DOM load xong
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".btn-submit").addEventListener("click", function (e) {
+        e.preventDefault();
+        validateForm();
+    });
+});
+
+
 // Load Tỉnh/TP
 async function loadProvinces(provinceCode) {
   console.log(provinceCode, "provinceCode");
@@ -437,6 +506,9 @@ async function loadWards(districtCode) {
   });
 }
 
+
+
+
 // Event
 document.getElementById("province").addEventListener("change", function () {
   if (this.value) loadDistricts(this.value);
@@ -482,6 +554,15 @@ function closeBuyNow() {
     box.classList.remove("FadeOutJelly");
     box.removeEventListener("animationend", handler);
   });
+}
+
+function openQuestion(btn) {
+  // toggle class cho chính button
+  btn.classList.toggle("active");
+
+  // tìm đến phần trả lời liền kề
+  const answer = btn.nextElementSibling;
+  answer.classList.toggle("show");
 }
 
 

@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<title>Thế giới điện thoại</title>
-	<link rel="shortcut icon" href="img/logo1.jpeg" />
+	<link rel="shortcut icon" href="img/logo.jpeg" />
 	<!-- Boxicons CSS -->
 	<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 	<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
@@ -25,7 +25,8 @@
 	<link rel="stylesheet" href="js/owlcarousel/owl.theme.default.min.css">
 	<script src="js/Jquery/Jquery.min.js"></script>
 	<script src="js/owlcarousel/owl.carousel.min.js"></script>
-
+	<!-- font awesome 6 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<!-- Link Swiper's CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -52,9 +53,8 @@
 </head>
 
 <body>
-	<header style="position: fixed; top: 0; right: 0; left: 0; z-index: 99999999999;">
-		<script> addTopNav(); </script>
-		<script> addHeader(); </script>
+	<header>
+		<script>addHeader();</script>
 	</header>
 
 	<main style="margin-top: 200px;">
@@ -84,9 +84,7 @@
 
 			<!-- <img src="img/banners/blackFriday.gif" alt="sp" style="width: 100%;"> -->
 
-			<br>
-
-			<div class="flexContain">
+			<!-- <div class="flexContain">
 
 				<div class="pricesRangeFilter dropdown" style="display: none;">
 					<button class="dropbtn">Giá tiền</button>
@@ -108,23 +106,43 @@
 					<div class="dropdown-content"></div>
 				</div>
 
-			</div> <!-- End khung chọn bộ lọc -->
+			</div>
 
 			<div class="choosedFilter flexContain" style="display: none;">
 				<a id="deleteAllFilter" style="display: none;">
 					<h3>Xóa bộ lọc</h3>
 				</a>
-			</div> <!-- Những bộ lọc đã chọn -->
+			</div>  -->
+			<!-- Những bộ lọc đã chọn -->
 
 			<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
 			<div class="contain-products" style="display:none">
 				<div class="filterName" style="display: none;">
 					<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
 				</div> <!-- End FilterName -->
+
+				<div class="filter-container">
+					<button class="filter-btn active" onclick="resetSortFilter()">
+						<i class="fa-solid fa-arrow-trend-up"></i> Mặc định
+					</button>
+					<!-- <button class="filter-btn">
+						<i class="fa-solid fa-arrow-trend-down"></i> Giá giảm dần
+					</button>
+					<button class="filter-btn">
+						<i class="fa-regular fa-comments"></i> Trao đổi
+					</button> -->
+					<button class="filter-btn" onclick="addSortFilter('ascending','name','Tên A-Z')">
+						Tên A-&gt;Z
+					</button>
+					<button class="filter-btn" onclick="addSortFilter('decrease','name','Tên Z-A')">
+						Tên Z-&gt;A
+					</button>
+
+				</div>
 				<div class="row">
 
 				</div>
-				<div id="products" class="homeproduct group flexContain row">
+				<div id="products" class="homeproduct group flexContains row">
 					<div id="khongCoSanPham">
 						<i class="fa fa-times-circle"></i>
 						Không có sản phẩm nào

@@ -58,7 +58,7 @@ var list_products = [
     masp: "Sam1",
   },
   {
-    name: "Dầu bánh răng gốc tổng hợp Mobil SHC 629",
+    name: "Dầu bánh răng gốc tổng hợp Mobil SHC 635",
     company: "Dầu công nghiệp",
     img: "https://sptc.com.vn/wp-content/uploads/2024/01/dau-banh-rang-goc-tong-hop-Mobil-SHC-627.webp",
     price: "Liên hệ",
@@ -68,7 +68,7 @@ var list_products = [
       value: "0",
     },
     detail: {
-      ten: "Dầu bánh răng gốc tổng hợp Mobil SHC 629",
+      ten: "Dầu bánh răng gốc tổng hợp Mobil SHC 635",
       model: "",
       tieuchuan: "",
       xuatsu: "",
@@ -232,7 +232,7 @@ var list_products = [
     masp: "Sam7",
   },
   {
-    name: "Dầu bánh răng gốc tổng hợp Mobil SHC 630",
+    name: "Dầu bánh răng gốc tổng hợp Mobil SHC 631",
     company: "Dầu công nghiệp",
     img: "https://sptc.com.vn/wp-content/uploads/2024/01/dau-banh-rang-goc-tong-hop-Mobil-SHC-627.webp",
     price: "Liên hệ",
@@ -242,7 +242,7 @@ var list_products = [
       value: "0",
     },
     detail: {
-      ten: "Dầu bánh răng gốc tổng hợp Mobil SHC 630",
+      ten: "Dầu bánh răng gốc tổng hợp Mobil SHC 631",
       model: "Rulo bọc cao su",
       tieuchuan: "JIS",
       xuatsu: "Việt Nam",
