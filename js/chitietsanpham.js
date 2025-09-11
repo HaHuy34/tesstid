@@ -379,6 +379,7 @@ function suggestion() {
   // ====== Hiển thị 5 sản phẩm lên web ======
   if (sanPhamTuongTu.length) {
     let div = document.getElementById("goiYSanPham");
+    
     addKhungSanPham(sanPhamTuongTu, "SẢN PHẨM TƯƠNG TỰ", ["", ""], div);
   }
 }

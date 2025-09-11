@@ -568,6 +568,23 @@ function addTopNavs() {
     </div><!-- End Top Nav  -->`);
 }
 
+// dungchung.js
+const dsSubmenu = [
+  {
+    ten: "Dầu Nhớt Mobil",
+    filter: ["promo=daunhotmobil", "sort=rateCount-decrease"]
+  },
+  {
+    ten: "Dầu Nhớt Motul",
+    filter: ["promo=daunhotmotul", "sort=rateCount-decrease"]
+  },
+  {
+    ten: "Dầu Nhớt Castrol",
+    filter: ["promo=daunhotcastrol", "sort=rateCount-decrease"]
+  }
+];
+
+
 // Thêm header
 function addHeader() {
   document.write(`   <div class="header-main">  
@@ -641,9 +658,21 @@ function addHeader() {
         <span class="cart-number"></span>
       </a>
     </div>
-    <ul>
+    <ul class="main-ul-nav">
       <li><a href="index.html">Trang chủ</a></li>
-      <li><a href="gioithieu.html">Sản Phẩm</a></li>
+      <li class="mains-li-dau"><a href="#" style="display: flex;align-items: center; gap:5px"> Dầu Nhớt <i class='bxr  bx-caret-down'  style="margin-top:1px;"></i> </a>
+        <ul class="submenu">
+          ${dsSubmenu
+          .map(
+            (sp) => `
+              <li>
+                <a href="index.html?${sp.filter.join("&")}">${sp.ten}</a>
+              </li>
+            `
+          )
+          .join("")}
+        </ul>
+      </li>
       <li><a href="gioithieu.html">Giới thiệu</a></li>
       <li><a href="tintuc.html">Tin tức</a></li>
       <li><a href="lienhe.html">Liên hệ</a></li>

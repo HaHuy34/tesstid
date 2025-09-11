@@ -2,52 +2,49 @@ window.onload = function () {
   khoiTao();
 
   // Thêm hình vào banner
-function addBanner(img1, img2) {
-  let wrapper = document.querySelector(".mySwiper .swiper-wrapper");
-  let slide = document.createElement("div");
-  slide.classList.add("swiper-slide");
-  
-  slide.innerHTML = `<img src="${img1}" alt="sp">`;
-  wrapper.appendChild(slide);
-}
+  function addBanner(img1, img2) {
+    let wrapper = document.querySelector(".mySwiper .swiper-wrapper");
+    let slide = document.createElement("div");
+    slide.classList.add("swiper-slide");
 
-// Thêm ảnh vào banner
-addBanner("img/banners/banner-0.jpg", "img/banners/banner-1.jpg");
-let numBanner = 3;
-for (let i = 1; i <= numBanner; i++) {
-  let linkimg = "img/banners/banner-" + i + ".jpg";
-  addBanner(linkimg, linkimg);
-}
-
-// Khởi tạo Swiper
-const progressCircle = document.querySelector(".autoplay-progress svg");
-const progressContent = document.querySelector(".autoplay-progress span");
-
-var swiper = new Swiper(".mySwiper", {
-  spaceBetween: 30,
-  centeredSlides: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-  on: {
-    autoplayTimeLeft(s, time, progress) {
-      progressCircle.style.setProperty("--progress", 1 - progress);
-      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-    }
+    slide.innerHTML = `<img src="${img1}" alt="sp">`;
+    wrapper.appendChild(slide);
   }
-});
 
+  // Thêm ảnh vào banner
+  addBanner("img/banners/banner-0.jpg", "img/banners/banner-1.jpg");
+  let numBanner = 3;
+  for (let i = 1; i <= numBanner; i++) {
+    let linkimg = "img/banners/banner-" + i + ".jpg";
+    addBanner(linkimg, linkimg);
+  }
 
+  // Khởi tạo Swiper
+  const progressCircle = document.querySelector(".autoplay-progress svg");
+  const progressContent = document.querySelector(".autoplay-progress span");
 
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    on: {
+      autoplayTimeLeft(s, time, progress) {
+        progressCircle.style.setProperty("--progress", 1 - progress);
+        progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+      },
+    },
+  });
 
   // autocomplete cho khung tim kiem
   autocomplete(document.getElementById("search-box"), list_products);
@@ -56,61 +53,61 @@ var swiper = new Swiper(".mySwiper", {
   var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
   for (var t of tags) addTags(t, "index.html?search=" + t);
 
-// Danh sách hãng
-var company = [
-  "fuchs.png",
-  "images.png",
-  "mst.jpg",
-  "nikken.jpeg",
-  "seco.jpg",
-  "ShellLogo.webp",
-  "ssk.png",
-  "techtyl.jpg",
-  "windin.jpg",
-];
+  // Danh sách hãng
+  var company = [
+    "fuchs.png",
+    "images.png",
+    "mst.jpg",
+    "nikken.jpeg",
+    "seco.jpg",
+    "ShellLogo.webp",
+    "ssk.png",
+    "techtyl.jpg",
+    "windin.jpg",
+  ];
 
-// Hàm tạo link
-function createLinkFilter(action, type, value) {
-  return `#${action}-${type}-${value}`;
-}
+  // Hàm tạo link
+  function createLinkFilter(action, type, value) {
+    return `#${action}-${type}-${value}`;
+  }
 
-// Hàm thêm hãng sản xuất
-function addCompany(img, nameCompany) {
-  var link = createLinkFilter("add", "company", nameCompany);
-  var new_tag = `
+  // Hàm thêm hãng sản xuất
+  function addCompany(img, nameCompany) {
+    var link = createLinkFilter("add", "company", nameCompany);
+    var new_tag = `
     <div class="item">
       <a href="${link}">
         <img src="${img}" alt="${nameCompany}">
       </a>
     </div>`;
-  document.querySelector(".companyMenu")
-          .insertAdjacentHTML("beforeend", new_tag);
-}
-
-$(document).ready(function () {
-  // Render item trước
-  for (var c of company) {
-    addCompany("img/company/" + c, c.replace(/\.[^/.]+$/, "")); 
-    // replace() để bỏ đuôi .png/.jpg cho sạch
+    document
+      .querySelector(".companyMenu")
+      .insertAdjacentHTML("beforeend", new_tag);
   }
 
-  // Rồi mới init Owl
-  $(".companyMenu").owlCarousel({
-    items: 5,
-    margin: 20,
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 2500,
-    smartSpeed: 600,
-    responsive: {
-      0: { items: 2 },
-      576: { items: 3 },
-      768: { items: 4 },
-      1200: { items: 4 },
-    },
-  });
-});
+  $(document).ready(function () {
+    // Render item trước
+    for (var c of company) {
+      addCompany("img/company/" + c, c.replace(/\.[^/.]+$/, ""));
+      // replace() để bỏ đuôi .png/.jpg cho sạch
+    }
 
+    // Rồi mới init Owl
+    $(".companyMenu").owlCarousel({
+      items: 5,
+      margin: 20,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 2500,
+      smartSpeed: 600,
+      responsive: {
+        0: { items: 2 },
+        576: { items: 3 },
+        768: { items: 4 },
+        1200: { items: 4 },
+      },
+    });
+  });
 
   // Thêm sản phẩm vào trang
   var sanPhamPhanTich;
@@ -124,14 +121,16 @@ $(document).ready(function () {
       sanPhamPhanTich,
       filtersFromUrl.page || 1
     );
-    if (!sanPhamPhanTrang.length) alertNotHaveProduct(false);
-    else addProductsFrom(sanPhamPhanTrang);
+    if (!sanPhamPhanTrang.length) {
+      alertNotHaveProduct(false);
+      let filterBox = document.querySelector(".filter-container");
+      if (filterBox) filterBox.style.display = "none";
+    } else addProductsFrom(sanPhamPhanTrang);
 
     // hiển thị list sản phẩm
     document.getElementsByClassName("contain-products")[0].style.display = "";
     document.getElementsByClassName("swiper")[0].style.display = "none";
-    document.getElementsByClassName(".title-products")[0].style.display = "none";
-
+    // document.getElementsByClassName("title-products")[0].style.display = "none";
   } else {
     // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
     var soLuong = window.innerWidth < 1300 ? 4 : 4; // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
@@ -253,7 +252,6 @@ function getFilterFromURL() {
 function phanTich_URL(filters, saveFilter) {
   // var filters = getFilterFromURL();
   var result = copyObject(list_products);
-  
 
   for (var i = 0; i < filters.length; i++) {
     var dauBang = filters[i].split("=");
@@ -390,7 +388,6 @@ function addKhungSanPham(tenKhung, color, filter, len, ele) {
   ele.insertAdjacentHTML("beforeend", s);
 }
 
-
 // Nút phân trang
 function themNutPhanTrang(soTrang, trangHienTai) {
   var divPhanTrang = document.getElementsByClassName("pagination")[0];
@@ -433,7 +430,6 @@ function themNutPhanTrang(soTrang, trangHienTai) {
       `"><i class="fa fa-angle-right"></i></a>`;
   }
 }
-
 
 // Tính toán xem có bao nhiêu trang + trang hiện tại,
 // Trả về mảng sản phẩm trong trang hiện tại tính được
@@ -710,22 +706,27 @@ function alertNotHaveProduct(coSanPham) {
 // ================== Tiện ích ==================
 function sortToString(sortBy) {
   switch (sortBy) {
-    case "price": return "Giá ";
-    case "star": return "Sao ";
-    case "rateCount": return "Đánh giá ";
-    case "name": return "Tên ";
-    default: return "";
+    case "price":
+      return "Giá ";
+    case "star":
+      return "Sao ";
+    case "rateCount":
+      return "Đánh giá ";
+    case "name":
+      return "Tên ";
+    default:
+      return "";
   }
 }
 
 // filter product
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".filter-btn");
 
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       // bỏ active ở tất cả nút
-      buttons.forEach(b => b.classList.remove("active"));
+      buttons.forEach((b) => b.classList.remove("active"));
       // thêm active cho nút được click
       btn.classList.add("active");
     });
