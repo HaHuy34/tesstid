@@ -11,16 +11,30 @@
 	right: 0;
 	left: 0;
 	z-index: 99999999999999999;
+	transition: transform 0.5s ease, opacity 0.4s ease;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Khi scroll bắt đầu (<100px): ẩn đi */
+.header-main.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Khi scroll >=100px: hiện lại với hiệu ứng trượt xuống */
+.header-main.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* --- TOP HEADER --- */
 .top-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 25px 40px;
+	padding: 25px 0px;
 	background-color: #fff;
 	flex-wrap: wrap;
 }
@@ -44,16 +58,42 @@
 .info-section {
 	display: flex;
 	align-items: center;
-	gap: 30px;
+	gap: 55px;
 	font-size: 14px;
 	flex-wrap: wrap;
 }
 
 .info-item {
-	display: flex;
 	gap: 10px;
 	color: #555;
+	transition: all 0.3s ease;
+	cursor: pointer;
 }
+
+.tienganh, .tiengviet {
+	transition: all 0.3s ease;
+}
+
+.info-item .tienganh {
+	transition: all 0.3s ease;
+	display: none;
+}
+
+.info-item:hover .tienganh {
+	transition: all 0.3s ease;
+
+display: block;
+}
+
+.tienganh:hover {
+	scale: 1.1;
+}
+
+.tiengviet:hover {
+	scale: 1.1;
+}
+
+
 
 .info-item i {
 	color: #d10000;
@@ -239,7 +279,7 @@ form.input-search {
 	border-radius: 10px;
 	height: 58%;
 	overflow: hidden;
-	width: 50%;
+	width: 42%;
 	/* điều chỉnh width của ô tìm kiếm trên header ở đây */
 }
 
@@ -279,3 +319,33 @@ form.input-search {
 	width: 100%;
 	position: relative;
 }
+
+/* Thanh cuộn nhỏ gọn cho toàn trang */
+::-webkit-scrollbar {
+  width: 3px;              /* độ rộng của thanh dọc */
+  height: 6px;             /* độ cao của thanh ngang */
+}
+
+/* Track (nền thanh cuộn) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;     /* màu nền */
+  border-radius: 10px;
+}
+
+/* Thanh kéo */
+::-webkit-scrollbar-thumb {
+  background: #888;        /* màu thanh kéo */
+  border-radius: 10px;
+}
+
+/* Khi hover vào thanh kéo */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+
+
+

@@ -401,89 +401,98 @@ function stringToNum(str, char) {
 function autocomplete(inp, arr) {
   var currentFocus;
 
-  inp.addEventListener("keyup", function (e) {
-    if (e.keyCode != 13 && e.keyCode != 40 && e.keyCode != 38) {
-      // not Enter,Up,Down arrow
-      var a,
-        b,
-        i,
-        val = this.value;
+inp.addEventListener("keyup", function (e) {
+  if (e.keyCode != 13 && e.keyCode != 40 && e.keyCode != 38) {
+    var a, b, i,
+      val = this.value;
 
-      /*close any already open lists of autocompleted values*/
+    // ❌ Nếu input rỗng → cảnh báo và thoát
+    if (!val || val.trim() === "") {
       closeAllLists();
-      if (!val) {
-        return false;
-      }
-      currentFocus = -1;
+      addAlertBox("⚠️ Vui lòng nhập tên sản phẩm!", "#f44336", "#fff", 2000);
+      return false;
+    }
 
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    currentFocus = -1;
 
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
+    /*create a DIV element that will contain the items (values):*/
+    a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
 
-      /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (
-          arr[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()
-        ) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
+    /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(a);
 
-          /*make the matching letters bold:*/
-          b.innerHTML =
-            "<strong>" + arr[i].name.substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].name.substr(val.length);
+    /*for each item in the array...*/
+    for (i = 0; i < arr.length; i++) {
+      /*check if the item starts with the same letters as the text field value:*/
+      if (
+        arr[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()
+      ) {
+        /*create a DIV element for each matching element:*/
+        b = document.createElement("DIV");
 
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+        /*make the matching letters bold:*/
+        b.innerHTML =
+          "<strong>" + arr[i].name.substr(0, val.length) + "</strong>";
+        b.innerHTML += arr[i].name.substr(val.length);
 
-          /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function (e) {
-            /*insert the value for the autocomplete text field:*/
-            inp.value = this.getElementsByTagName("input")[0].value;
-            inp.focus();
+        /*insert a input field that will hold the current array item's value:*/
+        b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
 
-            /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-            closeAllLists();
-          });
-          a.appendChild(b);
-        }
+        /*execute a function when someone clicks on the item value (DIV element):*/
+        b.addEventListener("click", function (e) {
+          inp.value = this.getElementsByTagName("input")[0].value;
+          inp.focus();
+          closeAllLists();
+        });
+        a.appendChild(b);
       }
     }
-  });
-  /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function (e) {
-    var x = document.getElementById(this.id + "autocomplete-list");
-    if (x) x = x.getElementsByTagName("div");
-    if (e.keyCode == 40) {
-      /*If the arrow DOWN key is pressed, increase the currentFocus variable:*/
-      currentFocus++;
-      /*and and make the current item more visible:*/
-      addActive(x);
-    } else if (e.keyCode == 38) {
-      //up
-      /*If the arrow UP key is pressed,
-            decrease the currentFocus variable:*/
-      currentFocus--;
-      /*and and make the current item more visible:*/
-      addActive(x);
-    } else if (e.keyCode == 13) {
-      /*If the ENTER key is pressed, prevent the form from being submitted,*/
+  }
+});
 
-      if (currentFocus > -1) {
-        /*and simulate a click on the "active" item:*/
-        if (x) {
-          x[currentFocus].click();
-          e.preventDefault();
-        }
+/*execute a function when a key is pressed on the keyboard:*/
+inp.addEventListener("keydown", function (e) {
+  var x = document.getElementById(this.id + "autocomplete-list");
+  if (x) x = x.getElementsByTagName("div");
+
+  if (e.keyCode == 40) {
+    // Arrow DOWN
+    currentFocus++;
+    addActive(x);
+  } else if (e.keyCode == 38) {
+    // Arrow UP
+    currentFocus--;
+    addActive(x);
+  } else if (e.keyCode == 13) {
+    // ENTER
+    e.preventDefault();
+
+    // ❌ Nếu input rỗng → cảnh báo
+    if (!this.value || this.value.trim() === "") {
+      addAlertBox("⚠️ Vui lòng nhập tên sản phẩm!", "#f44336", "#fff", 2000);
+      return;
+    }
+
+    if (currentFocus > -1) {
+      // Nếu đang chọn 1 item thì click
+      if (x) x[currentFocus].click();
+    } else {
+      // Nếu không chọn item nào → tìm trực tiếp
+      let index = timKiemTheoTen(this.value, arr);
+      if (index > -1) {
+        window.location.href = "product-detail.html?masp=" + arr[index].ma;
+      } else {
+        addAlertBox("❌ Không tìm thấy sản phẩm!", "#f44336", "#fff", 2000);
       }
     }
-  });
+  }
+});
+
+
 
   function addActive(x) {
     /*a function to classify an item as "active":*/
@@ -566,26 +575,47 @@ function addHeader() {
   <div class="logo-section">
     <a href="index.html">
       <img src="./img/logo.jpeg" alt="">
+      <div class="text-logo-main" style="text-align:center; display: none;">
+        <h2 style="color:#e85c0d; font-weight:bold; margin:0;">
+          CÔNG TY TNHH THƯƠNG MẠI KỸ THUẬT CÔNG NGHIỆP MATRIXQ
+        </h2>
+        <h2 style="color:#3498db; font-weight:bold; margin:0;">
+          MATRIXQ INDUSTRIAL TECHNICAL TRADING COMPANY LIMITED
+        </h2>
+      </div>
+
     </a>
+
     <!-- <h4 class="logo-title-main">CÔNG TY TNHH THƯƠNG MẠI <br> KỸ THUẬT CÔNG NGHIỆP MATRIXQ</h4> -->
   </div>
   <div class="info-section">
+    <div class="info-item">
+      <i class="fas fa-phone"></i>
+      <span>Hotline <br><strong>0947 086 705 - 0983 976 896</strong></span>
+    </div>
     <div class="info-item">
       <i class="fas fa-clock"></i>
       <span>Thời gian làm việc<br><strong>07:30 - 16:30</strong></span>
     </div>
     <div class="info-item">
       <i class="fas fa-envelope"></i>
-      <span>Email liên hệ<br><strong>salesmaycongnghiep@gmail.com</strong></span>
+      <span>Email liên hệ<br><strong>matrixqservice@gmail.com</strong></span>
     </div>
     <div class="info-item">
       <i class="fas fa-map-marker-alt"></i>
       <span>Hệ thống cửa hàng<br><strong>Tìm điểm bán hàng</strong></span>
     </div>
-    <div class="info-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
-        class="flag-icon">
-      <span>Tiếng Việt</span>
+    <div class="info-item" style="display: none;">
+      <div class="tiengviet">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
+          class="flag-icon">
+        <span>Tiếng Việt</span>
+      </div>
+      <div class="tienganh">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English"
+          class="flag-icon">
+        <span>English</span>
+      </div>
     </div>
   </div>
 </div>
@@ -612,17 +642,49 @@ function addHeader() {
       </a>
     </div>
     <ul>
-      <li><a href="#" class="active">Trang chủ</a></li>
-      <li><a href="#">Giới thiệu</a></li>
-      <li><a href="#">Tin tức</a></li>
-      <li><a href="#">Liên hệ</a></li>
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="gioithieu.html">Sản Phẩm</a></li>
+      <li><a href="gioithieu.html">Giới thiệu</a></li>
+      <li><a href="tintuc.html">Tin tức</a></li>
+      <li><a href="lienhe.html">Liên hệ</a></li>
     </ul>
 
   </div>
 </nav>
     </div>
 	 <!-- End Header -->`);
+  // Sau khi render header, set active theo trang hiện tại
+  let currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "") currentPage = "index.html"; // trường hợp vào domain gốc
+
+  document.querySelectorAll(".main-nav ul li a").forEach((link) => {
+    let linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
 }
+
+
+
+// Sau khi header render xong → gắn scroll event
+window.addEventListener("load", () => {
+  const header = document.querySelector(".header-main");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    if (scrollY === 0) {
+      header.classList.remove("hidden", "visible"); // trạng thái ban đầu
+    } else if (scrollY > 0 && scrollY < 300) {
+      header.classList.add("hidden");
+      header.classList.remove("visible");
+    } else if (scrollY >= 300) {
+      header.classList.add("visible");
+      header.classList.remove("hidden");
+    }
+  });
+});
 
 function addFooter() {
   document.write(`
@@ -640,9 +702,9 @@ function addFooter() {
       <h3>THÔNG TIN LIÊN HỆ</h3>
       <p><strong>CÔNG TY TNHH THƯƠNG MẠI KỸ THUẬT CÔNG NGHIỆP MATRIXQ</strong></p>
       <p><i class="fas fa-map-marker-alt"></i> Nhà Số 5, Ngách 63/45, Ngõ 63, Xóm 4, Thôn Lai Xá, Xã Kim Chung, Huyện Hoài Đức, Thành phố Hà Nội</p>
-      <i class='bxr  bx-phone-book'  ></i>  Hotline: Mr Thuận 0983 976 896</p>
+      <i class='bxr  bx-phone-book'  ></i>  Hotline: Mr Thuận 0947 086 705</p>
       <p><i class='bxr  bx-contact-book'  ></i>   Mã số thuế: 0109251241</p>
-      <p><i class='bxr  bx-envelope'  ></i>  salesmaycongnghiep@gmail.com</p>
+      <p><i class='bxr  bx-envelope'  ></i>  matrixqservice@gmail.com</p>
       <p><i class='bxr  bx-clock-7'  ></i>  Thứ 2 - Thứ 6: 8h00 – 17h15 | Thứ 7: 8h00 – 12h00</p>
     </div>
 
@@ -674,9 +736,10 @@ function addFooter() {
 // Nhắn tin
 function initContactButtons() {
   // Thông tin mặc định (bạn thay số & link ở đây)
-  const zaloLink = "https://zalo.me/0123456789";
-  const phoneNumber = "0123456789";
-  const messengerLink = "https://m.me/ten-facebook";
+  const zaloLink = "https://zalo.me/0947086705";
+  const phoneNumber = "0947086705";
+  const messengerLink =
+    "https://www.facebook.com/profile.php?id=100063713426917&mibextid=ZbWKwL";
 
   // Nếu chưa có CSS thì tự động thêm vào
   if (!document.getElementById("contact-buttons-style")) {
@@ -953,7 +1016,7 @@ function initBackToTop() {
 
 // Lấy màu ngẫu nhiên
 function getRandomColor() {
-  var letters = "0123456789ABCDEF";
+  var letters = "0947086705ABCDEF";
   var color = "#";
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
@@ -1045,6 +1108,8 @@ function getThongTinSanPhamFrom_TheGioiDiDong() {
   })();
 }
 
+
+
 // $('.taikhoan').find('input').on('keyup blur focus', function (e) {
 
 //     var $this = $(this),
@@ -1088,12 +1153,12 @@ function getThongTinSanPhamFrom_TheGioiDiDong() {
 
 // });
 
-window.addEventListener("scroll", function () {
-  const nav = document.querySelector(".main-nav");
-  if (window.scrollY > 100) {
-    // cuộn xuống 100px thì nav dính
-    nav.classList.add("fixed-nav");
-  } else {
-    nav.classList.remove("fixed-nav");
-  }
-});
+// window.addEventListener("scroll", function () {
+//   const nav = document.querySelector(".main-nav");
+//   if (window.scrollY > 100) {
+//     // cuộn xuống 100px thì nav dính
+//     nav.classList.add("fixed-nav");
+//   } else {
+//     nav.classList.remove("fixed-nav");
+//   }
+// });

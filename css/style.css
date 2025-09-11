@@ -85,6 +85,14 @@ a.call-phone:hover {
     transition: 0.3s;
 }
 
+footer #alert {
+    position: fixed;
+    right: 0 !important;
+    top: 177px;
+    height: fit-content;
+    z-index: 99999999999999999999999999999999999999999999999999999999999999999;
+}
+
 #closebtn {
     margin-left: 15px;
     color: white;

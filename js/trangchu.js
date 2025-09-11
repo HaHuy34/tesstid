@@ -253,6 +253,7 @@ function getFilterFromURL() {
 function phanTich_URL(filters, saveFilter) {
   // var filters = getFilterFromURL();
   var result = copyObject(list_products);
+  
 
   for (var i = 0; i < filters.length; i++) {
     var dauBang = filters[i].split("=");

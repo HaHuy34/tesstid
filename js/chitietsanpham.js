@@ -264,22 +264,42 @@ function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
       </div>
       <div class="listSpTrongKhung owl-carousel">`;
 
-  // Thêm từng sản phẩm (dạng item slide)
-  for (var i = 0; i < list_sanpham.length; i++) {
-    s += addProduct(list_sanpham[i], null, true);
+  // ==== Skeleton Loading trước khi render sản phẩm thật ====
+  for (let i = 0; i < 4; i++) {
+    s += `
+      <div class="container">
+        <div class="box">
+          <div class="skeleton">
+            <div class="skeleton-left">
+              <div class="line h17 w40 m10"></div>
+              <div class="line"></div>
+              <div class="line h8 w50"></div>
+              <div class="line w75"></div>
+            </div>
+            <div class="skeleton-right">
+              <div class="square"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
   }
 
   // Đóng khung
   s += `</div></div>`;
-
-  // Gắn vào element
   ele.innerHTML += s;
 
-  // Khởi tạo OwlCarousel cho phần này
-  $(ele)
-    .find(".owl-carousel")
-    .owlCarousel({
-      items: 4, // số sp/slide
+  // Sau 0.5s (giả lập data load), thay skeleton bằng sản phẩm thật
+  setTimeout(() => {
+    let carousel = ele.querySelector(".listSpTrongKhung");
+    carousel.innerHTML = ""; // xoá skeleton
+
+    for (var i = 0; i < list_sanpham.length; i++) {
+      carousel.innerHTML += addProduct(list_sanpham[i], null, true);
+    }
+
+    // Khởi động OwlCarousel sau khi render xong
+    $(carousel).owlCarousel({
+      items: 4,
       margin: 15,
       loop: true,
       nav: true,
@@ -294,7 +314,9 @@ function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
         1200: { items: 4 },
       },
     });
+  }, 500); // 0.5s giả lập load
 }
+
 
 /// gợi ý sản phẩm
 function suggestion() {
@@ -385,8 +407,76 @@ function enableZoom(imgElement) {
   });
 }
 
+// // Check form
+// function validateForm() {
+//     let gender = document.querySelector("input[name='gender']:checked");
+//     let name = document.querySelector("input[placeholder='Họ và tên']").value.trim();
+//     let phone = document.querySelector("input[placeholder='Số điện thoại']").value.trim();
+//     let email = document.querySelector("input[type='email']").value.trim();
+//     let province = document.getElementById("province").value;
+//     let district = document.getElementById("district").value;
+//     let ward = document.getElementById("ward").value;
+//     let address = document.querySelector("input[placeholder='Số nhà, tên đường']").value.trim();
+
+//     // Regex kiểm tra số điện thoại VN (10 số, bắt đầu từ 0)
+//     let phoneRegex = /^0\d{9}$/;
+//     // Regex kiểm tra email
+//     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+//     if (!gender) {
+//         Swal.fire("Thiếu thông tin", "Vui lòng chọn Anh/Chị", "warning");
+//         return false;
+//     }
+//     if (name === "") {
+//         Swal.fire("Thiếu thông tin", "Vui lòng nhập họ và tên", "warning");
+//         return false;
+//     }
+//     if (!phoneRegex.test(phone)) {
+//         Swal.fire("Sai định dạng", "Số điện thoại phải có 10 số và bắt đầu bằng 0", "error");
+//         return false;
+//     }
+//     if (!emailRegex.test(email)) {
+//         Swal.fire("Sai định dạng", "Vui lòng nhập email hợp lệ", "error");
+//         return false;
+//     }
+//     if (province === "") {
+//         Swal.fire("Thiếu thông tin", "Vui lòng chọn Tỉnh/Thành phố", "warning");
+//         return false;
+//     }
+//     if (district === "") {
+//         Swal.fire("Thiếu thông tin", "Vui lòng chọn Quận/Huyện", "warning");
+//         return false;
+//     }
+//     if (ward === "") {
+//         Swal.fire("Thiếu thông tin", "Vui lòng chọn Xã/Phường", "warning");
+//         return false;
+//     }
+//     if (address === "") {
+//         Swal.fire("Thiếu thông tin", "Vui lòng nhập số nhà, tên đường", "warning");
+//         return false;
+//     }
+
+//     // Nếu ok thì hiện thông báo đẹp
+//     Swal.fire({
+//         title: "🎉 Đặt hàng thành công!",
+//         text: "Chúng tôi sẽ liên hệ với bạn sớm.",
+//         icon: "success",
+//         confirmButtonText: "OK"
+//     });
+
+//     return true;
+// }
+
+// // Gắn sự kiện khi DOM load xong
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.querySelector(".btn-submit").addEventListener("click", function (e) {
+//         e.preventDefault();
+//         validateForm();
+//     });
+// });
+
 // Check form
-function validateForm() {
+  function validateForm() {
     let gender = document.querySelector("input[name='gender']:checked");
     let name = document.querySelector("input[placeholder='Họ và tên']").value.trim();
     let phone = document.querySelector("input[placeholder='Số điện thoại']").value.trim();
@@ -396,9 +486,7 @@ function validateForm() {
     let ward = document.getElementById("ward").value;
     let address = document.querySelector("input[placeholder='Số nhà, tên đường']").value.trim();
 
-    // Regex kiểm tra số điện thoại VN (10 số, bắt đầu từ 0)
     let phoneRegex = /^0\d{9}$/;
-    // Regex kiểm tra email
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!gender) {
@@ -434,37 +522,144 @@ function validateForm() {
         return false;
     }
 
-    // Nếu ok thì hiện thông báo đẹp
+    return true;
+  }
+
+  // Gửi dữ liệu lên Google Sheets
+  function submitOrder() {
+    const product = document.querySelector(".product h3").innerText;
+    const gender = document.querySelector('input[name="gender"]:checked')?.parentElement.innerText.trim() || "";
+    const name = document.querySelector('input[placeholder="Họ và tên"]').value.trim();
+    const phone = document.querySelector('input[placeholder="Số điện thoại"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const province = document.querySelector('#province');
+    const district = document.querySelector('#district');
+    const ward = document.querySelector('#ward');
+    
+    const note = document.querySelector('textarea').value.trim();
+
+    const provinceName = province.options[province.selectedIndex]?.dataset.name || "";
+    const districtName = district.options[district.selectedIndex]?.dataset.name || "";
+    const wardName = ward.options[ward.selectedIndex]?.dataset.name || "";
+
+    const street = document.querySelector('input[placeholder="Số nhà, tên đường"]').value.trim();
+    const address = `${street}, ${wardName}, ${districtName}, ${provinceName}`.replace(/(, )+/g, ", ").trim();
+
+    const data = {
+      product,
+      gender,
+      name,
+      phone,
+      email,
+      address,
+      note
+    };
+
+    // Hiện loading
     Swal.fire({
+      title: "Đang xử lý...",
+      text: "Vui lòng đợi trong giây lát",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    fetch("https://script.google.com/macros/s/AKfycbzpyS0gtvwLmlQ7Xv-NwSw9J5QuLiW4bRAqT17iBWra9-6JS6cfCiUr2DuOQvPwEi9V/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    .then(() => {
+      Swal.fire({
         title: "🎉 Đặt hàng thành công!",
         text: "Chúng tôi sẽ liên hệ với bạn sớm.",
         icon: "success",
         confirmButtonText: "OK"
-    });
+      }).then(() => {
+        closeBuyNow(); // Đóng popup sau khi OK
+      });
+    })
+    .catch(err => console.error("Lỗi gửi dữ liệu:", err));
+  }
 
-    return true;
-}
-
-// Gắn sự kiện khi DOM load xong
-document.addEventListener("DOMContentLoaded", function () {
+  // Gắn sự kiện khi DOM load xong
+  document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".btn-submit").addEventListener("click", function (e) {
-        e.preventDefault();
-        validateForm();
+      e.preventDefault();
+      if (validateForm()) {
+        submitOrder(); // chỉ gửi khi validate OK
+      }
     });
-});
+  });
 
 
+// // Load Tỉnh/TP
+// async function loadProvinces(provinceCode) {
+//   console.log(provinceCode, "provinceCode");
+//   const res = await fetch("https://provinces.open-api.vn/api/p/");
+//   const data = await res.json();
+
+//   let provinceSelect = document.getElementById("province");
+  
+//   data.forEach((p) => {
+//     let opt = document.createElement("option");
+//     opt.value = p.code;
+//     opt.textContent = p.name;
+//     provinceSelect.appendChild(opt);
+//   });
+// }
+
+// // Load Quận/Huyện
+// async function loadDistricts(provinceCode) {
+//   const res = await fetch(
+//     `https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`
+//   );
+//   const data = await res.json();
+
+//   let districtSelect = document.getElementById("district");
+//   districtSelect.innerHTML = "<option value=''>Quận/Huyện</option>";
+//   document.getElementById("ward").innerHTML =
+//     "<option value=''>Xã/Phường</option>";
+
+//   data.districts.forEach((d) => {
+//     let opt = document.createElement("option");
+//     opt.value = d.code;
+//     opt.textContent = d.name;
+//     districtSelect.appendChild(opt);
+//   });
+// }
+
+// // Load Xã/Phường
+// async function loadWards(districtCode) {
+//   const res = await fetch(
+//     `https://provinces.open-api.vn/api/d/${districtCode}?depth=2`
+//   );
+//   const data = await res.json();
+//   let wardSelect = document.getElementById("ward");
+//   wardSelect.innerHTML = "<option value=''>Xã/Phường</option>";
+
+//   data.wards.forEach((w) => {
+//     let opt = document.createElement("option");
+//     opt.value = w.code;
+//     opt.textContent = w.name;
+//     wardSelect.appendChild(opt);
+//   });
+// }
 // Load Tỉnh/TP
-async function loadProvinces(provinceCode) {
-  console.log(provinceCode, "provinceCode");
+async function loadProvinces() {
   const res = await fetch("https://provinces.open-api.vn/api/p/");
   const data = await res.json();
 
   let provinceSelect = document.getElementById("province");
+  provinceSelect.innerHTML = "<option value=''>Tỉnh/Thành phố</option>";
+
   data.forEach((p) => {
     let opt = document.createElement("option");
     opt.value = p.code;
     opt.textContent = p.name;
+    opt.setAttribute("data-name", p.name);
     provinceSelect.appendChild(opt);
   });
 }
@@ -485,6 +680,7 @@ async function loadDistricts(provinceCode) {
     let opt = document.createElement("option");
     opt.value = d.code;
     opt.textContent = d.name;
+    opt.setAttribute("data-name", d.name);
     districtSelect.appendChild(opt);
   });
 }
@@ -502,6 +698,7 @@ async function loadWards(districtCode) {
     let opt = document.createElement("option");
     opt.value = w.code;
     opt.textContent = w.name;
+    opt.setAttribute("data-name", w.name);
     wardSelect.appendChild(opt);
   });
 }
