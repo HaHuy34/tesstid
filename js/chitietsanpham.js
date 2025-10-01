@@ -97,9 +97,53 @@ function phanTich_URL_chiTietSanPham() {
       `&#8363;</span>`;
   }
 
+  function renderProductDetail(product) {
+  // tạo HTML từ data
+  let html = `
+    <h1 class="pr-title-main-header">${product.detail.ten}</h1>
+
+    <p class="pr-title-main-desc">
+      <strong>${product.detail.ten}</strong> ${product.detail.detailcontent || ""}
+    </p>
+
+    <div class="pr-title-main-center">
+      <img src="${product.detail.iamge?.iamge1 || product.img}" 
+           alt="${product.detail.ten}" 
+           class="pr-title-main-img">
+      <div class="pr-title-main-hotline">Hotline: 0947 086 705</div>
+      <p class="pr-title-main-caption">Hình ảnh: ${product.detail.ten}</p>
+    </div>
+  `;
+
+  // thêm ưu điểm nếu có
+  if (product.uudiem) {
+    html += `<h2 class="pr-title-main-subtitle">Tính năng và lợi điểm</h2><ul class="pr-title-main-list">`;
+    for (let key in product.uudiem) {
+      html += `<li>${product.uudiem[key]}</li>`;
+    }
+    html += `</ul>`;
+  }
+
+  // thêm ứng dụng nếu có
+  if (product.ungdung) {
+    html += `<h2 class="pr-title-main-subtitle">Các ứng dụng chính</h2><ul class="pr-title-main-list">`;
+    for (let key in product.ungdung) {
+      html += `<li>${product.ungdung[key]}</li>`;
+    }
+    html += `</ul>`;
+  }
+
+  // render vào div
+  document.getElementById("titleProductMains").innerHTML = html;
+}
+
+// Ví dụ gọi cho sản phẩm đầu tiên
+renderProductDetail(list_products[0]);
+
+
   // Cập nhật chi tiết khuyến mãi
-  document.getElementById("detailPromo").innerHTML =
-    getDetailPromo(sanPhamHienTai);
+  // document.getElementById("detailPromo").innerHTML =
+  //   getDetailPromo(sanPhamHienTai);
 
   // Cập nhật thông số
   var info = document.getElementsByClassName("info")[0];
@@ -141,47 +185,47 @@ function phanTich_URL_chiTietSanPham() {
   });
 }
 
-// Chi tiết khuyến mãi
-function getDetailPromo(sp) {
-  switch (sp.promo.name) {
-    case "bangtai":
-      var span =
-        `<span style="font-weight: bold"> lãi suất ` +
-        sp.promo.value +
-        `% </span>`;
-      return (
-        `Khách hàng có thể mua trả góp sản phẩm với ` +
-        span +
-        `với thời hạn 6 tháng kể từ khi mua hàng.`
-      );
+// // Chi tiết khuyến mãi
+// function getDetailPromo(sp) {
+//   switch (sp.promo.name) {
+//     case "bangtai":
+//       var span =
+//         `<span style="font-weight: bold"> lãi suất ` +
+//         sp.promo.value +
+//         `% </span>`;
+//       return (
+//         `Khách hàng có thể mua trả góp sản phẩm với ` +
+//         span +
+//         `với thời hạn 6 tháng kể từ khi mua hàng.`
+//       );
 
-    case "giamgia":
-      var span =
-        `<span style="font-weight: bold">` + sp.promo.value + `</span>`;
-      return (
-        `Khách hàng sẽ được giảm ` +
-        span +
-        ` khi tới mua trực tiếp tại cửa hàng`
-      );
+//     case "giamgia":
+//       var span =
+//         `<span style="font-weight: bold">` + sp.promo.value + `</span>`;
+//       return (
+//         `Khách hàng sẽ được giảm ` +
+//         span +
+//         ` khi tới mua trực tiếp tại cửa hàng`
+//       );
 
-    case "moiramat":
-      return `Khách hàng sẽ được thử máy miễn phí tại cửa hàng. Có thể đổi trả lỗi trong vòng 2 tháng.`;
+//     case "moiramat":
+//       return `Khách hàng sẽ được thử máy miễn phí tại cửa hàng. Có thể đổi trả lỗi trong vòng 2 tháng.`;
 
-    case "giareonline":
-      var del = stringToNum(sp.price) - stringToNum(sp.promo.value);
-      var span =
-        `<span style="font-weight: bold">` + numToString(del) + `</span>`;
-      return (
-        `Sản phẩm sẽ được giảm ` +
-        span +
-        ` khi mua hàng online bằng thẻ VPBank hoặc tin nhắn SMS`
-      );
+//     case "giareonline":
+//       var del = stringToNum(sp.price) - stringToNum(sp.promo.value);
+//       var span =
+//         `<span style="font-weight: bold">` + numToString(del) + `</span>`;
+//       return (
+//         `Sản phẩm sẽ được giảm ` +
+//         span +
+//         ` khi mua hàng online bằng thẻ VPBank hoặc tin nhắn SMS`
+//       );
 
-    default:
-      var span = `<span style="font-weight: bold">61 xe Wave Alpha</span>`;
-      return `Cơ hội trúng ` + span + ` khi trả góp Home Credit`;
-  }
-}
+//     default:
+//       var span = `<span style="font-weight: bold">61 xe Wave Alpha</span>`;
+//       return `Cơ hội trúng ` + span + ` khi trả góp Home Credit`;
+//   }
+// }
 
 function addThongSo(ten, giatri) {
   return (
