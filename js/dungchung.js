@@ -622,17 +622,22 @@ function addHeader() {
       <i class="fas fa-map-marker-alt"></i>
       <span>Hệ thống cửa hàng<br><strong>Tìm điểm bán hàng</strong></span>
     </div>
-    <div class="info-item" style="display: none;">
-      <div class="tiengviet">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
-          class="flag-icon">
-        <span>Tiếng Việt</span>
-      </div>
-      <div class="tienganh">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English"
-          class="flag-icon">
-        <span>English</span>
-      </div>
+    <div class="info-item">
+     <!-- // <div class="tiengviet">
+      //   <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
+      //     class="flag-icon">
+      //   <span>Tiếng Việt</span>
+      // </div>
+      // <div class="tienganh">
+      //   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English"
+      //     class="flag-icon">
+      //   <span>English</span>
+      // </div>
+      -->
+      <a onclick="checkTaiKhoan()" style="z-index: 9999999999999999999999999999999999999999999999999999999999;">
+                        <i class="fa fa-user"></i>
+                        Tài khoản
+      </a>
     </div>
   </div>
 </div>
