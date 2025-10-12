@@ -1,57 +1,63 @@
-window.onload = function () {
-    khoiTao();
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    // thêm tags (từ khóa) vào khung tìm kiếm
-    var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
-    for (var t of tags) addTags(t, "index.html?search=" + t);
-}
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const requests = [];
 
-function nguoidung() {
-    //kiem tra ho ten
-    var hoten = document.formlh.ht.value;
-    //kiem tra so dien thoai
-    var dienthoai = document.formlh.sdt.value;
+  if (document.getElementById("baoGia").checked) requests.push("Nhận báo giá");
+  if (document.getElementById("taiLieu").checked) requests.push("Xem tài liệu kỹ thuật");
+  if (document.getElementById("tuVan").checked) requests.push("Tư vấn ngay");
 
-    //kiểm tra họ tên
-    if (!checkName(hoten)) {
-        addAlertBox('Họ tên không phù hợp.', '#f55', '#000', 3000);
-        formlh.ht.focus();
-        return false;
-    }
-    //-------
-    else if (!checkPhone(dienthoai)) {
-        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
-        return false;
-    }
+  if (!name || !phone) {
+    Swal.fire({
+      title: "Thiếu thông tin!",
+      text: "Vui lòng nhập Họ tên và Số điện thoại.",
+      icon: "warning",
+      confirmButtonText: "OK"
+    });
+    return;
+  }
 
-    addAlertBox('Gửi thành công. Chúng tôi chân thành cám ơn những góp ý từ bạn.', '#5f5', '#000', 5000); // cám ơn
-    // document.formlh.reset(); // làm sạch
-    return false; // thoát
-}
+  Swal.fire({
+    title: "Đang gửi...",
+    text: "Vui lòng chờ trong giây lát",
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading()
+  });
 
-function checkName(str) {
-    var special = '~!@#$%^&*()_+=-`./*{}[]|\'<>?;"';
+  // ⚠️ Dùng chung URL Google Apps Script
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyVBD-VUizQ4UhNJTkXeNI6lg1DDdaIKy34c96A0oFsm4xUbipaecXtxgjH7a1xSaL_/exec";
 
-    for (var i = 0; i < str.length; i++) {
-        if (Number(str[i])) return false;
-        for(var j = 0; j < special.length; j++)
-            if (str[i] == special[j]) return false;
-    }
-    return true;
-}
+  const data = {
+    type: "contact", // 🔥 Phân biệt loại form
+    name,
+    phone,
+    email,
+    requests: requests.join(", ")
+  };
 
-function checkPhone(phone) {
-    for(var i =0 ; i< phone.length ;i++)
-    {
-        if(phone.charAt(i)<"0" || phone.charAt(i)>"9")
-            return false;
-    }
-    return true;
-}
-
-function checkPhone2(phone) {
-    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if (phone.match(phoneno)) return true;
-
-    return false;
-}
+  fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    Swal.fire({
+      title: "🎉 Gửi liên hệ thành công!",
+      text: "Chúng tôi sẽ phản hồi bạn sớm nhất có thể.",
+      icon: "success",
+      confirmButtonText: "OK"
+    }).then(() => document.getElementById("contactForm").reset());
+  })
+  .catch((err) => {
+    Swal.fire({
+      title: "Lỗi kết nối!",
+      text: "Không thể gửi dữ liệu: " + err.message,
+      icon: "error",
+      confirmButtonText: "OK"
+    });
+  });
+});

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Liên hệ - Thế giới điện thoại</title>
+    <title>Liên hệ - Matrixq</title>
     <link rel="shortcut icon" href="img/logo.jpeg" />
 
     <!-- Load font awesome icons -->
@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <!-- our files -->
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- our files -->
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/topnav.css">
@@ -31,56 +36,84 @@
     <link rel="stylesheet" href="css/lienhe.css">
 
     <!-- js -->
-    <script src="data/products.js"></script>
     <script src="js/dungchung.js"></script>
-    <script src="js/lienhe.js"></script>
+
 
 </head>
 
 <body>
-    <script> addTopNav();</script>
-
-    <section style="min-height: 85vh">
+    <!-- <script> addTopNav();</script> -->
+    <header>
         <script> addHeader(); </script>
+    </header>
+    <section class="container">
 
-        <div class="body-lienhe container">
-            <div class="lienhe-header">Liên hệ</div>
-            <div class="lienhe-info">
-                <div class="info-left">
-                    <p>
-                    <h2 style="color: gray"> CÔNG TY CỔ PHẦN H - GROUP </h2><br />
-                    <b>Địa chỉ:</b> 273 An Dương Vương, phường 3, Quận 5, TPHCM<br /><br />
-                    <b>Telephone:</b> 028 3835 4409<br /><br />
-                    <b>Hotline:</b> 097777777 - CSKH: 028 9996 777<br /><br />
-                    <b>Website:</b> <a href="https://github.com/HoangTran0410/DoAn_Web1">Github</a> <br /><br />
-                    <b>E-mail:</b> DoAn@gmail.com<br /><br />
-                    <b>Mã số thuế:</b> 01 02 03 04 05<br /><br />
-                    <b>Tài khoản ngân hàng :</b><br /><br />
-                    <b>Số TK:</b> 060008086888 <br /><br />
-                    <b>Tại Ngân hàng:</b> Agribank Chi nhánh Sài Gòn<br /><br /><br /><br />
-                    <b>Quý khách có thể gửi liên hệ tới chúng tôi bằng cách hoàn tất biểu mẫu dưới đây. Chúng tôi
-                        sẽ trả lời thư của quý khách, xin vui lòng khai báo đầy đủ. Hân hạnh phục vụ và chân thành
-                        cảm ơn sự quan tâm, đóng góp ý kiến đến Smartphone Store.</b>
-                    </p>
+        <section class="contact-section">
+            <h2 class="title">LIÊN HỆ</h2>
+            <!-- <p class="subtitle">Liên hệ: Đại lý cung cấp thiết bị và giải pháp kỹ thuật công nghiệp</p> -->
+
+            <div class="contact-container">
+                <div class="in4-matri">
+                    <div class="company-info">
+                        <h3>CÔNG TY TNHH THƯƠNG MẠI KỸ THUẬT CÔNG NGHIỆP MATRIXQ</h3>
+                        <p><strong>Mã số thuế:</strong> 0109251241</p>
+                        <p><strong>Địa chỉ thuế:</strong> Nhà Số 5, Ngách 63/45, Ngõ 63, Xóm 4, Thôn Lai Xá, Xã Hoài
+                            Đức, TP
+                            Hà Nội, Việt Nam</p>
+                        <p><strong>Địa chỉ:</strong> Nhà Số 5, Ngách 63/45, Ngõ 63, Xóm 4, Thôn Lai Xá, Xã Kim Chung,
+                            Huyện
+                            Hoài Đức, TP Hà Nội, Việt Nam</p>
+                        <p><strong>Tình trạng:</strong> Đang hoạt động</p>
+                        <p><strong>Tên quốc tế:</strong> MATRIXQ INDUSTRIAL TECHNICAL TRADING COMPANY LIMITED</p>
+                        <p><strong>Người đại diện:</strong> Nguyễn Văn Thuận</p>
+                        <p><strong>Điện thoại:</strong> 0947 086 705</p>
+                        <p><strong>Email:</strong> matrixqservice@gmail.com</p>
+                        <p><strong>Website:</strong> <a href="https://matrixq.vn" target="_blank">https://matrixq.vn</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <input type="text" id="name" placeholder="Họ và tên" required>
+                                <input type="text" id="phone" placeholder="Số điện thoại" required>
+                            </div>
+                            <input type="email" id="email" placeholder="Email" style="margin-bottom: 10px;">
+                            <textarea placeholder="Nội dung liên hệ"></textarea>
+
+                            <div class="form-options">
+                                <label><input type="checkbox" id="baoGia"> Tôi muốn nhận báo giá</label>
+                                <label><input type="checkbox" id="taiLieu"> Tôi muốn xem tài liệu kỹ thuật</label>
+                                <label><input type="checkbox" id="tuVan"> Tôi cần tư vấn ngay</label>
+                            </div>
+
+                            <button type="submit" class="submit-btn">GỬI</button>
+                        </form>
+                    </div>
+
                 </div>
-                <div class="info-right">
-                    <iframe width="100%" height="450"
-                        src="https://maps.google.com/maps?width=100%&amp;height=450&amp;hl=en&amp;coord=10.759660000323064,106.68192160315813&amp;q=273%20An%20D%C6%B0%C6%A1ng%20V%C6%B0%C6%A1ng%20Ph%C6%B0%E1%BB%9Dng%203%20Qu%E1%BA%ADn%205%20H%E1%BB%93%20Ch%C3%AD%20Minh%20700000%2C%20Vi%E1%BB%87t%20Nam+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed"
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
-                            href="https://www.maps.ie/create-google-map/">Embed
-                            Google Map
-                        </a>
-                    </iframe>
-                    <br />
+
+
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.9900711532289!2d105.80504833958042!3d21.05232833591228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab0001fa2a83%3A0xce0bf5480c56d6c3!2zTmfDoWNoIDYz!5e1!3m2!1svi!2s!4v1757080580757!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" width="100%" height="400" style="border:0;"
+                        allowfullscreen="" loading="lazy"></iframe>
                 </div>
-            </div>
-            
-        </div>
+        </section>
+
+
     </section>
 
     <script>
         addContainTaiKhoan();
     </script>
+
+    <div>
+        <script>initContactButtons();</script>
+    </div>
+    <script>gotoTop();</script>
 
     <div class="footer">
         <script>
@@ -89,7 +122,7 @@
 
     </div>
 
-    <i class="fa fa-arrow-up" id="goto-top-page" onclick="gotoTop()"></i>
+
     <!-- Boostrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -97,6 +130,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <script src="js/lienhe.js"></script>
 </body>
 
 </html>

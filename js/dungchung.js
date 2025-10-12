@@ -622,8 +622,8 @@ function addHeader() {
       <i class="fas fa-map-marker-alt"></i>
       <span>Hệ thống cửa hàng<br><strong>Tìm điểm bán hàng</strong></span>
     </div>
-    <div class="info-item">
-     <!-- // <div class="tiengviet">
+    <!-- //<div class="info-item">
+      <div class="tiengviet">
       //   <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="VN"
       //     class="flag-icon">
       //   <span>Tiếng Việt</span>
@@ -633,12 +633,12 @@ function addHeader() {
       //     class="flag-icon">
       //   <span>English</span>
       // </div>
-      -->
-      <a onclick="checkTaiKhoan()" style="z-index: 9999999999999999999999999999999999999999999999999999999999;">
+      
+      <a onclick="checkTaiKhoan()" style="z-index: 9999999999999999999999999999999999999999999999999999999999; display: none;">
                         <i class="fa fa-user"></i>
                         Tài khoản
       </a>
-    </div>
+    </div>-->
   </div>
 </div>
 
@@ -686,6 +686,90 @@ function addHeader() {
   </div>
 </nav>
     </div>
+    <div class="reponsive-header">
+			<div class="logo-section">
+				<a href="index.html">
+					<img src="./img/logo.jpeg" alt="">
+					<div class="text-logo-main" style="text-align:center; display: none;">
+						<h2 style="color:#e85c0d; font-weight:bold; margin:0;">
+							CÔNG TY TNHH THƯƠNG MẠI KỸ THUẬT CÔNG NGHIỆP MATRIXQ
+						</h2>
+						<h2 style="color:#3498db; font-weight:bold; margin:0;">
+							MATRIXQ INDUSTRIAL TECHNICAL TRADING COMPANY LIMITED
+						</h2>
+					</div>
+
+				</a>
+
+
+			</div>
+			<nav class="main-nav">
+				<div class="container link-main-nav">
+					<form class="input-search" method="get" action="index.html">
+						<div class="autocomplete">
+							<input id="search-box" name="search" autocomplete="off" type="text"
+								placeholder="Nhập từ khóa tìm kiếm...">
+							<button type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</form>
+					<div class="row cf">
+						<div class="three col">
+							<div class="hamburger" id="hamburger-1">
+								<span class="line"></span>
+								<span class="line"></span>
+								<span class="line"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="nav-rep-main">
+					<span class="close-btn-abs">&times;</span>
+					<ul class="main-ul-nav">
+						<li><a href="index.html">Trang chủ</a></li>
+						<li class="mains-li-dau"><a href="#" style="display: flex;align-items: center; gap:5px"> Dầu
+								Nhớt <i class='bxr  bx-caret-down' style="margin-top:1px;"></i> </a>
+							<ul class="submenu">
+								${dsSubmenu
+								.map(
+								(sp) => `
+								<li>
+									<a href="index.html?${sp.filter.join(" &")}">${sp.ten}</a>
+								</li>
+								`
+								)
+								.join("")}
+							</ul>
+						</li>
+						<li><a href="gioithieu.html">Giới thiệu</a></li>
+						<li><a href="tintuc.html">Tin tức</a></li>
+						<li><a href="lienhe.html">Liên hệ</a></li>
+					</ul>
+
+					<div class="info-section">
+						<div class="info-item">
+							<i class="fas fa-phone"></i>
+							<span>Hotline <br><strong>0947 086 705 - 0983 976 896</strong></span>
+						</div>
+						<div class="info-item">
+							<i class="fas fa-clock"></i>
+							<span>Thời gian làm việc<br><strong>07:30 - 16:30</strong></span>
+						</div>
+						<div class="info-item">
+							<i class="fas fa-envelope"></i>
+							<span>Email liên hệ<br><strong>matrixqservice@gmail.com</strong></span>
+						</div>
+						<div class="info-item">
+							<i class="fas fa-map-marker-alt"></i>
+							<span>Hệ thống cửa hàng<br><strong>Tìm điểm bán hàng</strong></span>
+						</div>
+
+					</div>
+				</div>
+			</nav>
+		</div>
 	 <!-- End Header -->`);
   // Sau khi render header, set active theo trang hiện tại
   let currentPage = window.location.pathname.split("/").pop();
@@ -698,6 +782,36 @@ function addHeader() {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-rep-main");
+const closeBtns = document.querySelector(".nav-rep-main .close-btn-abs");
+console.log(closeBtns);
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+  closeBtns.style.display = "block";
+});
+
+closeBtns.addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  navMenu.classList.remove("active");
+  closeBtns.style.display = "none";
+
+});
+});
+
+navMenu.addEventListener("click", (e) => {
+  // Nếu click vào khu vực menu trống (tức là ngoài nội dung)
+  if (e.offsetX > navMenu.offsetWidth) {
+    navMenu.classList.remove("active");
+  }
+});
+
+
+
 
 
 

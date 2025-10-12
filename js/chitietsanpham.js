@@ -58,7 +58,7 @@ function phanTich_URL_chiTietSanPham() {
   var divChiTiet = document.getElementsByClassName("chitietSanpham")[0];
 
   // Đổi title
-  document.title = nameProduct + " - Thế giới điện thoại";
+  document.title = nameProduct + " - Matrixq";
 
   // Cập nhật tên h1
   var h1 = divChiTiet.getElementsByTagName("h1")[0];
@@ -610,7 +610,7 @@ function enableZoom(imgElement) {
       }
     });
 
-    fetch("https://script.google.com/macros/s/AKfycbzpyS0gtvwLmlQ7Xv-NwSw9J5QuLiW4bRAqT17iBWra9-6JS6cfCiUr2DuOQvPwEi9V/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyVBD-VUizQ4UhNJTkXeNI6lg1DDdaIKy34c96A0oFsm4xUbipaecXtxgjH7a1xSaL_/exec", {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },

@@ -99,7 +99,7 @@ function addToWeb(p, ele, returnString) {
 
   // Cho mọi thứ vào tag <li>... </li>
   var newLi =
-    `<div class="col-12 col-sm-6 col-md-3 col-lg-3">
+    `<div class="col-6 col-sm-4 col-md-4 col-lg-3">
 	<div class="sanPham item">
 	<a href="` +
     chitietSp +

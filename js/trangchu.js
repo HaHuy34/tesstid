@@ -133,7 +133,7 @@ window.onload = function () {
     // document.getElementsByClassName("title-products")[0].style.display = "none";
   } else {
     // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
-    var soLuong = window.innerWidth < 1300 ? 4 : 4; // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
+    var soLuong = window.innerWidth < 100 ? 3 : 4; // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
 
     // Các màu
     var yellow_red = ["#ff9c00", "#ec1f1f"];
