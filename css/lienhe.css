@@ -1,4 +1,9 @@
 /* ======= CẤU TRÚC CHUNG ======= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .contact-section {
   font-family: "Segoe UI", Roboto, sans-serif;
   color: #333;
@@ -194,6 +199,29 @@ textarea {
 .contact-section {
   margin-top: 260px;
 }
+}
+
+@media screen and (max-width: 768px){
+.in4-matri {
+    display: flex
+;
+    flex-direction: column;
+}
+
+.company-info p {
+    font-size: 21px;
+}
+
+.contact-form textarea::placeholder,
+.contact-form input::placeholder {
+    font-size: 21px;
+}
+
+.contact-form textarea,
+.contact-form input {
+    padding: 22px 12px;
+}
+
 }
 
 @media screen and (min-width:582px) and (max-width: 699px){
